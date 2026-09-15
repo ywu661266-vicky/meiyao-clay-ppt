@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
-"""Meiyao Clay PPT —— 背景图 → 可编辑 16:9 PPTX 合成脚本。
+"""Meiyao Clay PPT —— 背景图 → 16:9 PPTX 合成脚本。
 
-把 ImageGen 生成的黏土风背景图铺满 16:9 页面，叠加可编辑中文文字
-（标题 + 要点）与讲师备注，文字默认落在左侧奶油铭牌 safe 区，
-并主动避开右下角水印。
+把 ImageGen 生成的黏土风页面铺满 16:9 幻灯片，并写入讲师备注。
+
+【默认行为 text_mode="baked"】
+    图里的标题/标签已经是「黏土立体字」（烘进画面），脚本**不再叠加任何扁平文字**，
+    避免压出双层字、破坏黏土质感。这是本 skill 的推荐用法。
+
+【text_mode="overlay"】
+    仅用于「成段正文 / 需要可编辑」的场景，才会在奶油铭牌 safe 区叠加文字，
+    并主动避开右下角水印。
 
 用法：
     python build_pptx.py --config slides.json --out "主题_黏土风.pptx"
@@ -13,13 +19,21 @@ slides.json 结构：
 {
   "title": "整套课的标题（仅用于元数据）",
   "default_font": "Microsoft YaHei",
+  "default_text_mode": "baked",          // baked（默认）| overlay
   "slides": [
     {
       "image": "D:/.../cover.png",
-      "title": "AI + Excel 数据处理实战",
-      "subtitle": "办公实战课",          // 可选
-      "bullets": ["要点一", "要点二"],     // 可选
       "notes": "讲师备注",                // 可选
+      // 图里已烘过黏土标题的页 —— 不要写 title，否则会叠两层字
+      "text_mode": "baked"
+    },
+    {
+      "image": "D:/.../body.png",
+      "text_mode": "overlay",             // 需要可编辑正文时才用
+      "title": "标题文字",
+      "subtitle": "副标题",                // 可选
+      "bullets": ["要点一", "要点二"],      // 可选
+      "notes": "讲师备注",
       "text_side": "left",                // left | right | top，默认 left
       "title_color": "1E3A5F"             // 可选，十六进制（默认深蓝黑）
     }
@@ -107,7 +121,8 @@ def add_textbox(slide, left, top, width, height):
     return tf
 
 
-def build_slide(prs: Presentation, item: dict, default_font: str) -> None:
+def build_slide(prs: Presentation, item: dict, default_font: str,
+                default_text_mode: str = "baked") -> None:
     slide = prs.slides.add_slide(prs.slide_layouts[6])
 
     image = item.get("image")
@@ -116,6 +131,23 @@ def build_slide(prs: Presentation, item: dict, default_font: str) -> None:
     else:
         print(f"[warn] 背景图不存在，已跳过: {image}", file=sys.stderr)
 
+    notes = item.get("notes")
+    if notes:
+        slide.notes_slide.notes_text_frame.text = str(notes)
+
+    mode = (item.get("text_mode") or default_text_mode).lower()
+
+    # ---- baked：图里已有黏土立体字，脚本不再叠任何扁平文字 ----
+    if mode != "overlay":
+        if item.get("title") or item.get("subtitle") or item.get("bullets"):
+            print(
+                f"[warn] text_mode=baked：图为 {os.path.basename(str(image))}，"
+                "已跳过脚本叠字（避免压出双层字）。若确实要叠可编辑正文，请设 text_mode=\"overlay\"。",
+                file=sys.stderr,
+            )
+        return
+
+    # ---- overlay：仅用于成段正文/需要可编辑时 ----
     side = (item.get("text_side") or "left").lower()
     if side == "top":
         panel_left, panel_top = Inches(1.4), Inches(0.5)
@@ -168,10 +200,6 @@ def build_slide(prs: Presentation, item: dict, default_font: str) -> None:
             run.text = f"· {bullet}"
             set_run_font(run, default_font, 16, False, hex_rgb(BODY_COLOR))
 
-    notes = item.get("notes")
-    if notes:
-        slide.notes_slide.notes_text_frame.text = str(notes)
-
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="把黏土风背景图合成为可编辑 16:9 PPTX")
@@ -184,6 +212,7 @@ def main() -> int:
         cfg = json.load(f)
 
     font = args.font or cfg.get("default_font") or DEFAULT_FONT
+    text_mode = (cfg.get("default_text_mode") or "baked").lower()
     slides = cfg.get("slides") or []
     if not slides:
         print("[error] slides.json 里没有 slides", file=sys.stderr)
@@ -196,7 +225,7 @@ def main() -> int:
         prs.core_properties.title = str(cfg["title"])
 
     for item in slides:
-        build_slide(prs, item, font)
+        build_slide(prs, item, font, text_mode)
 
     out_dir = os.path.dirname(os.path.abspath(args.out))
     if out_dir:
