@@ -1,0 +1,24 @@
+{
+  "ink_wh": [
+    313,
+    79
+  ],
+  "aspect_ratio": 3.962025316455696,
+  "edge_over_height": 0.017985203143448557,
+  "edge_p90_over_height": 0.02531645569620253,
+  "face_median_rgb": [
+    206,
+    143,
+    49
+  ],
+  "edge_median_rgb": [
+    226,
+    218,
+    204
+  ],
+  "grain_hf_std": 1.8493794202804565,
+  "base_plate_ratio": 0.054313099041533544,
+  "text": "改法清单",
+  "cap_height": 80,
+  "note": "本机可复现的金标准（render_title_clay 默认参数）。旧的 p9_title_gold.png 是**出图模型画在第9页底板上的**标题，已改名归档，不要拿它标定参数。"
+}
