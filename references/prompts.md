@@ -42,22 +42,37 @@ The '{文字}' is sculpted from thick 3D polymer-clay letters: raised, chunky, r
 
 ## 1. 角色锚点（Character Anchor）· 1024×1024
 
-> 用途：定下 Q 版讲师的唯一形象，后续所有页面都拿它当参考图（`image1`）+ 复用同一段人物描述。
+> **人物段的唯一真源 = `references/character-style.md`。** 那里有用户的判级、八六原版画法解剖、身份锁定段、换装清单、多小人规则。
 > **必须出「完整全身」**：只出半身，后面要全身时模型会自己"补"下半身，服装和比例就漂了。
+> **画风基准（不是"唯一默认款"）= 圆框眼镜 + 深色发 + 约 2.5–3 头身 Q 版小孩**（= **用户自己的成品** `cover-excel-example.png` / `toc-clay-lettering-example.png`）。
+> **人物要"百变、不定死"**：脸 / 画风锁，衣服 / 姿态 / 场景每页可变、可男可女。
 
 ```
-A single cute Q-version polymer-clay girl figurine, FULL BODY, standing upright and facing forward. Her ENTIRE body from the top of her hair bun down to her shoes is completely visible inside the frame, head to toe, NOT cropped by any frame edge, with clear empty margin above her hair and below her shoes. Proportions: oversized round head, compact chibi body, short limbs, total height about 2.5 head-lengths. Short black hair with straight bangs, a white clay headband decorated with two small heart-shaped pieces, exactly ONE bun on top of her head (no twin buns, no side buns), round wire glasses, a soft cute face with rosy blush and a small gentle closed smile. She wears a white blazer over a cream high-neck blouse, a knee-length cream A-line skirt and small black clay shoes. Arms relaxed at her sides. Handmade polymer-clay texture with subtle fingerprints and sculpting marks, soft even studio lighting, plain light neutral gray background for later compositing. Unmistakably handmade clay, not photorealistic, not anime line art, not glossy plastic toy. No text, no watermark, no letters, no numbers.
+A single premium handcrafted polymer-clay figurine of a cute little kid presenter, about 2.5–3 head-lengths tall (a big round head on a small compact body, short rounded limbs — NOT a tall slender figure, NOT an adult). COMPLETE FULL BODY from the top of the hair down to the shoes, standing upright, facing the camera, entire body completely visible inside the frame, head to toe, NOT cropped by any frame edge, with clear empty margin above the hair and below the shoes.
+
+Hair: dark (black or deep brown) hair gathered into a neat top bun, with a soft side-swept fringe, and a rose/pink bow headband across the top of the head.
+
+Face: big round cute face, large expressive eyes with clear highlights, a small smiling mouth, soft rosy blush. Wearing large ROUND glasses on the nose.
+
+Outfit: a blue pinafore dress over a light cream shirt, tiny rounded shoes (clothes may change page to page — see the outfit list in character-style.md).
+
+Material: handmade polymer clay with clear fingerprints, sculpting tool marks and slightly matte soft surfaces on every form; NOT photorealistic, NOT glossy plastic toy, NOT flat anime line art.
+
+Lighting: soft even studio light with gentle contact shadow at the feet. Background: plain light warm grey seamless backdrop for later compositing. No text, no watermark, no letters, no numbers.
 ```
 
-**可替换的人物特征位（按用户描述改）：**
-| 位置 | 示例 |
-|------|------|
-| 发型 | `Short black hair` / `long straight black hair parted in the middle` / `wavy brown hair` |
-| 发饰 | `with a cute headband` / `with a pink bow` / `with one small bun on top` |
-| 眼镜 | `round glasses on her face` / 去掉即无眼镜 |
-| 服装 | `a pretty knee-length A-line dress` / `white blazer over a cream blouse` / `purple overalls with a white shirt` |
+**脸部锁定段（同一套之内每页必抄，一字不改 —— 只锁脸，不锁衣）：**
+```
+Keep EXACTLY the same little kid character from the reference image: identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical clay-material look and identical 2.5–3-head-length chibi proportion. Only the clothing, the pose and the surrounding scene may change.
+```
 
-> 角色锚点图**不带字**是唯一例外——它只是形象基准，不是幻灯片页面。
+**同页多小人（八六原版就这么用，不会出错）：**
+```
+The SAME character appears {N} times in this scene, each instance with the identical face and identical hairstyle, but performing DIFFERENT actions — one {action A}, one {action B}. Same face, same hair, same glasses on every instance; only the pose differs.
+```
+> ⚠️ 不要写 "two girls"（模型会理解成两个不同角色），要写 `the SAME character, repeated`。
+
+**换装清单 / 备选人物款式 / 判级**：见 `references/character-style.md`。
 
 > **⚠️ 人物一致性硬规则（已实测）：** 后续**每一页**（封面/目录/内容页/总结页）都**必须**把这张角色锚点图作为 `image1` 传给 ImageGen 做 image-to-image。
 > 只靠文字描述会漂移——实测翻车：**锚点图是 1 个头顶啾啾，封面却生成 2 个侧丸子头，脸也变了**。
@@ -74,11 +89,11 @@ A single cute Q-version polymer-clay girl figurine, FULL BODY, standing upright 
 > 场景不要每次现编——从 `references/style-library.md`【封面款式库 CV1–CV6】任选一个场景块替换下面的桌面场景（云岛 / 工具台 / 知识书架 / 直播间 / 咖啡工位 / 阶梯图书馆），人物段照旧不动。
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation cover. A cute Q-version clay girl character with short black hair, a cute headband, ONE small bun tied on top of her head, round glasses on her face, wearing a knee-length A-line dress. She sits at a blue clay desk with a laptop showing a colorful spreadsheet of cells. A small friendly clay robot assistant stands next to her. On the desk: clay books, a potted plant, a coffee mug, clay star decorations. Deep blue gradient background with scattered clay stars and floating clay bar charts and pie charts. At the top center, a wide cream-colored clay ribbon plaque; on it, the title 'AI + Excel 数据处理实战' is sculpted from thick 3D polymer-clay letters: raised, chunky, rounded edges, deep chocolate-brown clay, visible thickness and fingerprints on every letter, casting soft real shadows onto the plaque. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints, rounded friendly shapes, soft directional lighting, rich dimensional shadows. High-end educational presentation cover. Make every Chinese character clearly readable and correctly formed.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation cover. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing upright in the scene, COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, with clear empty margin above her hair and below her shoes. She wears {换装，见 character-style.md 换装清单}. She is placed inside the scene, interacting with it, sharing the same light as the props. On the desk: a laptop showing a colorful spreadsheet of cells, clay books, a potted plant, a coffee mug, small clay star decorations. Deep blue gradient background with scattered clay stars. At the top center, a wide cream-colored clay ribbon plaque; on it, the title '{标题}' is sculpted from thick 3D polymer-clay letters: raised, chunky, rounded edges, deep chocolate-brown clay, visible thickness and fingerprints on every letter, casting soft real shadows onto the plaque. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints, rounded friendly shapes, soft directional lighting, rich dimensional shadows. High-end educational presentation cover. Make every Chinese character clearly readable and correctly formed.
 ```
 
 **要点：**
-- **人物同样要「完整全身」**：`COMPLETE FULL-BODY figure ... NOT cropped by any frame edge`，比例 `total height about 2.5 head-lengths`。封面裁半截同样算不合格。
+- **人物同样要「完整全身」**：`COMPLETE FULL-BODY figure ... NOT cropped by any frame edge`，比例 `about 2.5–3 head-lengths`（Q 版小孩）。封面裁半截同样算不合格。
 - 中文标题用**单引号原样包住**，句末追加 `Make every Chinese character clearly readable and correctly formed.`
 - 标题放在**顶部居中奶油铭牌**上，下方留人物与桌面
 - 配色词（`Deep blue gradient`）随方案替换；字块颜色随铭牌底色替换
@@ -114,7 +129,7 @@ BACKGROUND PLATE ONLY. Use image1 as the LOCKED character identity.
 {把第 1 节那段全身人物描述逐字粘过来}
 Create a premium handcrafted polymer-clay diorama, 16:9 widescreen presentation slide background, {配色} gradient wall.
 
-LAYOUT: The RIGHT 40% of the frame holds the girl as a COMPLETE FULL-BODY figure standing on a small round clay podium — her ENTIRE body from the top of her hair bun down to her shoes completely visible inside the frame, head to toe, NOT cropped by any frame edge, NOT hidden behind furniture or props, with clear empty margin above her hair and below her shoes. Beside her feet only {道具1} and {道具2}.
+LAYOUT: The RIGHT 40% of the frame holds the girl as a COMPLETE FULL-BODY figure standing on a small round clay podium — her ENTIRE body from the top of her hair down to her shoes completely visible inside the frame, head to toe, NOT cropped by any frame edge, NOT hidden behind furniture or props, with clear empty margin above her hair and below her shoes. Keep her face locked to the reference image: identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion. She wears {换装}. Beside her feet only {道具1} and {道具2}.
 
 The LEFT 55% of the frame must be a COMPLETELY EMPTY smooth gradient wall — NO cards, NO boxes, NO shelves, NO icons, NO frames, NO props in the left area; it is deliberately reserved blank space for text that will be added later.
 
@@ -169,7 +184,7 @@ Absolutely NO text anywhere in the image except that one title. No watermark, no
 ## 5. 总结 / 结尾页（Summary）· 1024×576
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen closing slide. Theme: {总结主题}. A cute Q-version clay girl character with short black hair, a cute headband, ONE small bun tied on top of her head, round glasses on her face, wearing a knee-length A-line dress, standing with a small clay robot giving a thumbs up, beside a blue clay desk with a laptop showing a completed dashboard, a trophy, a checkmark and stars. Deep blue gradient background with floating clay stars and soft bokeh. On the left, a large cream-colored clay plaque; on it the title '{标题}' is sculpted from thick 3D raised polymer-clay letters with visible thickness, rounded edges and fingerprints, casting soft real shadows. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints and sculpted texture, rounded friendly shapes, soft directional lighting, rich dimensional shadows. Make every Chinese character clearly readable and correctly formed, no garbled characters.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen closing slide. Theme: {总结主题}. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, wearing {换装}, giving a small encouraging gesture beside a small clay robot that gives a thumbs up, next to a blue clay desk with a laptop showing a completed dashboard, a trophy, a checkmark and stars. Deep blue gradient background with floating clay stars and soft bokeh. On the left, a large cream-colored clay plaque; on it the title '{标题}' is sculpted from thick 3D raised polymer-clay letters with visible thickness, rounded edges and fingerprints, casting soft real shadows. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints and sculpted texture, rounded friendly shapes, soft directional lighting, rich dimensional shadows. Make every Chinese character clearly readable and correctly formed, no garbled characters.
 ```
 
 ---

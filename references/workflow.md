@@ -11,7 +11,7 @@
 1. **内容**：主题 + 每页要讲什么。
    - 有文件就先读文件（`.md` / `.docx` / `.pptx` / `.html`），从里面提取真实内容，不编造。
    - 用户只给关键词时，先列出拟定的页目录（如：封面 / 目录 / 6 个场景 / 总结），**让用户确认页数和顺序**，再动图。
-2. **人物**：让他用一句话说清形象，例如"短发、发箍、一个小啾啾、戴眼镜、穿裙子"。
+2. **人物**：见 `references/character-style.md`（**人物"百变、不定死"**：脸/画风统一，衣服姿态场景可换）。画风基准 = 圆框眼镜 + 深色发 + 约 2.5–3 头身 Q 版小孩，或让用户用一句话说清想要的形象。
 3. **配色**：默认深蓝；一句"要换配色吗"即可，别展开长篇选项。
 
 ---
@@ -20,12 +20,12 @@
 
 - 生成 1 张 `1024x1024`，**完整全身**站立（头顶到鞋子全部在画面内，上下都留白），中性灰底。
   - ⚠️ 别只出半身：后续页面都要求全身，模型会自己"补"下半身，服装和比例就跑偏。**锚点直接给全身，后面才稳。**
-  - prompt 写死 `COMPLETE FULL-BODY figure, ENTIRE body from the top of her hair bun down to her shoes completely visible, head to toe, NOT cropped`，并给比例 `total height about 2.5 head-lengths`。
+  - prompt 写死 `COMPLETE FULL-BODY figure, ENTIRE body from the top of the hair down to the shoes completely visible, head to toe, NOT cropped`，并给比例 `about 2.5–3 head-lengths`（Q 版小孩）。
 - **当场给用户看**，并逐条列出"我核对的特征"（发型/发饰/眼镜/服装/**是否全身完整**），让他一眼确认。
 - 不合格 → 按反馈改特征重出 1 张；**永远单张迭代，不批量。**
 
 **话术模板：**
-> 这版人物特征对不对？我核对：短发 ✅ 发箍 ✅ 眼镜 ✅ 白西装+米白内搭 ✅ 头顶一个啾啾 ✅ 全身完整（头到脚没裁） ✅。对的话我出封面，不对你说哪要改，我重出。
+> 这版人物特征对不对？我核对：深色发顶髻 + 粉发带 ✅ 圆框眼镜 ✅ 约 2.5–3 头身 Q 版小孩 ✅ 全身完整（头到脚没裁） ✅。对的话我出封面，不对你说哪要改，我重出。
 
 ---
 
@@ -60,7 +60,7 @@
 1. **人物锚点带了吗？** —— 凡是画面里有人的底图，**必须把已定稿的人物锚点图作为 `image1` 传入**
    （当前锚点：`D:/needs/clay_deck/_anchor_girl_p10.png`，丸子头+米白发带+圆眼镜+白外套米裙）。
    只靠文字描述模型会自由发挥年龄/发型/发色 —— 第 2 页 v1 没传锚点，人物被画成**灰发老人**，整页报废。
-   prompt 里同时抄回锁定句（`black hair bun, cream headband, round glasses, cream blazer and pleated skirt, same girl as the reference`）。
+   prompt 里同时抄回脸部锁定句（`Keep EXACTLY the same little kid character from the reference image: identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical clay-material look and identical 2.5–3-head-length chibi proportion. Only the clothing, the pose and the surrounding scene may change.`）。
 2. **留白写死了吗？** —— 要放文字的区域必须在 prompt 里写死 EMPTY 句（LEFT THIRD … reserved for text），
    且**不能多留**：留白区只占该放文字的面积，多留就是"大面积空白"。
 3. **满版密度够吗？** —— 对照【三·六 满版密度铁律】：四角、底边都有内容（道具贴边、被裁切），
@@ -173,7 +173,7 @@ prompt 写法：
 - 三行文字**逐条列清位置 + 内容**（`- TOP capsule — badge icon: … Text: "…" in THICK RAISED ORANGE-CLAY LETTERS, followed by "…" in THICK RAISED DARK-NAVY-CLAY LETTERS`）；
 - 写死材质句：`CRITICAL: every piece of text in this slide is sculpted raised clay lettering — thick, plump, rounded, clearly visible thickness, soft bevels and real drop shadows, exactly the same material and lighting as the clay scene. NOT flat printed text, NOT flat stickers.`；
 - 背景写 `deep saturated violet-purple gradient background with a soft darker vignette`（**有暗角才立得住**，平渐变会让整页发飘）；
-- 仍要抄回「人物完整全身」「single bun」等锁定句，并带锚点图作 `image1`。
+- 仍要抄回「人物完整全身」+「脸部锁定句（见 `character-style.md`）」，并带锚点图作 `image1`。
 
 **为什么背景板不出正文（结论）**：中文笔画密度高，图片模型在**整页**里写一句话说明就必错字乱码（实测"抓技技能"），而且改一个字就要重出整张图。文字单独做件，才能"一页写满内容 + 想改就改"。
 
