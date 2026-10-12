@@ -14,9 +14,15 @@
 
 给用户先选"这个 Q 版形象长什么样"。**选定后先出 1 张角色锚点图确认，之后每一页都把它作为 `image1` 传入。**
 
+> ⚠️ **2026-10-11 修订**：人物**不设"唯一默认款"**——用户要求「**百变、不定死**」（脸/画风统一，衣服/姿态/场景可变）。
+> **唯一真源 = `references/character-style.md`**，下表 A 款描述已过时，别照抄。
+> **画风基准 = 圆框眼镜 + 深色发 + 约 2.5–3 头身 Q 版小孩**（= **用户自己的成品** `assets/examples/cover-excel-example.png`）。
+> 下表 B–F 的**多 IP 风格用户明确喜欢**，作为备选款式继续保留。
+
 | 代号 | 款式 | 关键特征 | 画风参考图 | 适合 |
 |---|---|---|---|---|
-| **A** | 职场专业可爱（默认） | 短发齐刘海 · 爱心白发箍 · 头顶 **1 个**小啾啾 · 圆框眼镜 · 白西装 + 米白高领 · 圆脸大眼腮红小嘴 | 内置描述；已确认锚点见交付目录 `角色锚点_A_*.png` | 培训 / 汇报 / 晨会，**偏严肃** |
+| **A**（画风基准） | ⭐⭐⭐ 画风基准：Q 版小孩 | 深色发顶髻 + 粉色蝴蝶结发带 · 圆框眼镜 · **约 2.5–3 头身** · 蓝裙（衣可换） | **用户成品** `assets/examples/cover-excel-example.png` / `toc-clay-lettering-example.png`；**描述见 `character-style.md`** | 培训 / 汇报 / 晨会 / 通用 |
+| **A2** | ⭐⭐ 二类备选：呆板规矩款 | 短发齐刘海 · 头顶小啾啾 · 圆框眼镜 · 白西装 + 米白高领 | `assets/examples/character-anchor-example.png` | 用户点名要"更规矩"时 |
 | **B** | Q 版联盟风 | 哑光黏土 · 极圆大头 · 五官极简（点眼 + 弧线笑）· 小身体娃娃 | `assets/style-refs/1027cf08cbafe2dce4b97fbe67d3b82a.jpg`（哈利波特 Q 版） | 轻松 / 活泼 / 大众向 |
 | **C** | 古风汉服款 | 双丸子头 + 小花发饰 · 垂耳饰 · 青绿 + 橙汉服 · 大眼黑瞳 + 腮红 | `assets/style-refs/63085bfcf9606efc83a92b11ecc38df6.jpg` | 国风 / 传统文化 |
 | **D** | 棕发大眼款 | 棕色长卷发 + 米色蝴蝶结 · 米白背心 + 军绿短裙 + 堆堆靴 · 极简脸大黑眼 | `assets/style-refs/aeb84a6455e7dfbb32eb0bb41eee4057.jpg` | 年轻 / 时尚 / 生活 |
@@ -256,7 +262,7 @@ python scripts/tone_match.py <目录> --analyze    # 只量化不写文件
 3. **人物要"在机器里干活"**，不要"站在机器旁边"。参考图的男孩是坐在机器开口里的。
    ⚠️ 但与本 skill 铁律 3（完整全身）冲突 → 折中写法：
    `Its front is a TALL OPEN BAY like a workshop window, and inside that bay the figure stands
-   as a COMPLETE FULL-BODY figure, ENTIRE body from the top of her hair bun down to her shoes
+   as a COMPLETE FULL-BODY figure, ENTIRE body from the top of her hair down to her shoes
    completely visible inside the opening, NOT cropped by any frame edge.`
    （把"开口"写成"高到装得下整个人"的工作间，两个要求就都满足了。）
 4. **四角塞道具**：参考图四角是橙星／红心／绿叶／紫花／齿轮；缺角就是"边上空的"。
@@ -872,8 +878,9 @@ Image.fromarray(np.clip(a + gm[..., None]*(6.0*w[..., None]), 0, 255).astype(np.
 
 **内页 prompt 结构：**
 ```
-Keep the EXACT same girl character as the reference image (image1) — identical hair, headband,
-ONE bun on top, glasses, outfit, cuter soft face, same handmade polymer-clay texture.
+Keep the EXACT same little kid character as the reference image (image1) — identical round face, identical
+large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length
+chibi proportion, same handmade polymer-clay texture. Only the clothing, the pose and the scene change.
 Place her into this scene: a premium handcrafted polymer-clay diorama, 16:9 widescreen slide.
 Scene: {从内页款式库选的场景块}.
 Deep purple gradient background with a few floating clay stars.
@@ -1473,9 +1480,12 @@ NO atmospheric bloom, NO light beam, NO glow wash. Everything is in sharp focus.
 
 ## 三·三十三、**满意款 · 瓷砖排版 + Q版人物 + 深蓝墙**（2026-09-20 凌晨 · 用户拿两张满意图点名："排版和人物以及背景"要学到 skill 里）
 
-> 参考样本（用户明确"非常满意"）：
+> 参考样本：
 > ① 课程目录页（6 瓷砖阵）；② 「AI + Excel 数据处理实战」封面。
-> 用户口径：**颜色不重要，重点是排版 / 人物 / 背景**；文字效果 = 模型画在奶白板上的棕色黏土字。
+> 用户口径（2026-10-11 更新判级）：**颜色不重要，重点是排版 / 人物 / 背景**；文字效果 = 模型画在奶白板上的棕色黏土字。
+> ⚠️ **人物判级**：用户当面把 `character-anchor-example.png`（丸子头素袍款）判为**二类满意（达标但呆板）**，
+> 把 `cover-excel-example.png` / `toc-clay-lettering-example.png`（圆框眼镜 Q 版小孩，**用户自己的成品**）判为**最满意**。
+> 但**不设唯一默认款**（人物要"百变、不定死"）。以 `references/character-style.md` 为准。
 > 两张错误样张（写实人脸 + 浮字面板）只做 PPT 反面案例素材，**不许模仿**。
 
 ### 骨架 D：牌匾标题 + 中央瓷砖阵 + 左右人物（目录页/清单页新形态）
@@ -1550,7 +1560,7 @@ each tile = one small clay icon on top + its brown clay label below:
 ITEM1 (ICON1), ITEM2 (ICON2), ITEM3 (ICON3), ITEM4 (ICON4), ITEM5 (ICON5), ITEM6 (ICON6).
 The tile grid is the ONLY hero arrangement; floor CLEAN, almost no debris.
 CHARACTERS (position flexible — swap sides or stack same side to balance each page):
-cute chibi clay girl, big head, hair bun, round glasses, small body, standing on the floor, full body visible;
+Keep the EXACT same little kid character as the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion, standing on the floor, COMPLETE FULL BODY visible, NOT cropped;
 small cream clay robot with antenna standing nearby.
 A few props: stacked books, potted plants, coffee cup. 8k, shallow depth of field.
 NO realistic human face, NO floating text boxes, NO translucent panels, NO watermark.
@@ -1615,3 +1625,15 @@ NO realistic human face, NO floating text boxes, NO translucent panels, NO water
 - 只改版式不出图时：用 `scripts/clay_props.py` + `clay_band.py` 在现有底图上重排条带，
   但**条带系换版式必须重出底图**（骨架长在底图上）。
 - 本册排版自检：装册前逐页登记版式编号，违反铁律 1/2 就重排。
+
+
+## 【三·三十六】⛔ 已废除：禁止对成页做全册统一调色（2026-09-20 05:00 用户叫停）
+
+第 24 轮曾尝试把 15 页全部"校到八六量化基线"（亮度/饱和/紫相/四角），**结果全册偏黄、
+四角压出浓重暗角（"镜头感"），用户要求全部回退**。教训：
+
+- **出好的黏土成页一概不再做全局调色**——页间色差只接受在**出图阶段**控制
+  （prompt 里写死同一墙色描述，如 `deep indigo-violet speckled wall`）；
+- 量化基线（亮≈83 / 四角≈31 / 饱和 0.58-0.60）只用于**验收/诊断**，不用于后处理目标；
+- 用户反馈整套"不像一套"时，处理顺序：先看是不是出图 prompt 没写死墙色 →
+  重出个别偏差大的页 → **永远不动已验收的成页像素**。
