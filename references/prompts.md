@@ -34,9 +34,12 @@ The '{文字}' is sculpted from thick 3D polymer-clay letters: raised, chunky, r
 **字块颜色**（按配色选，要和画面协调但保证对比度）：
 | 铭牌底色 | 字块颜色 | 写法 |
 |---|---|---|
-| 奶油白（默认） | 深可可棕 | `deep chocolate-brown clay letters` |
+| 奶油白/浅杏（默认） | 深可可棕 | `deep chocolate-brown clay letters` |
 | 奶油白 | 深藏蓝 | `deep navy clay letters` |
-| 深色底（无铭牌） | 奶油白 | `cream-white clay letters` |
+| **深色底（紫/深蓝/绿/橙等）** | **奶油白** | `cream-white clay letters` |
+| **暖色系（马卡龙/彩虹/奶杏）** | **深棕/深藏蓝** | `deep chocolate-brown clay letters` |
+
+> ⚠️ **铭牌颜色必须随方案换**（详见 `references/style-system.md` §2.1 铭牌配色映射表）。❌ 禁止在换色系时仍写 `cream-colored clay plaque`——否则底框白色率会飙到 40-77%。
 
 ---
 
@@ -89,14 +92,16 @@ The SAME character appears {N} times in this scene, each instance with the ident
 > 场景不要每次现编——从 `references/style-library.md`【封面款式库 CV1–CV6】任选一个场景块替换下面的桌面场景（云岛 / 工具台 / 知识书架 / 直播间 / 咖啡工位 / 阶梯图书馆），人物段照旧不动。
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation cover. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing upright in the scene, COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, with clear empty margin above her hair and below her shoes. She wears {换装，见 character-style.md 换装清单}. She is placed inside the scene, interacting with it, sharing the same light as the props. On the desk: a laptop showing a colorful spreadsheet of cells, clay books, a potted plant, a coffee mug, small clay star decorations. Deep blue gradient background with scattered clay stars. At the top center, a wide cream-colored clay ribbon plaque; on it, the title '{标题}' is sculpted from thick 3D polymer-clay letters: raised, chunky, rounded edges, deep chocolate-brown clay, visible thickness and fingerprints on every letter, casting soft real shadows onto the plaque. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints, rounded friendly shapes, soft directional lighting, rich dimensional shadows. High-end educational presentation cover. Make every Chinese character clearly readable and correctly formed.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation cover. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing upright in the scene, COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, with clear empty margin above her hair and below her shoes. She wears {换装，见 character-style.md 换装清单}. She is placed inside the scene, interacting with it, sharing the same light as the props. On the desk: a laptop showing a colorful spreadsheet of cells, clay books, a potted plant, a coffee mug, small clay star decorations. {背景色} gradient background with scattered clay stars. At the top center, a wide {铭牌色} clay ribbon plaque; on it, the title '{标题}' is sculpted from thick 3D polymer-clay letters: raised, chunky, rounded edges, {字块色} clay, visible thickness and fingerprints on every letter, casting soft real shadows onto the plaque. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints, rounded friendly shapes, soft directional lighting, rich dimensional shadows. High-end educational presentation cover. Make every Chinese character clearly readable and correctly formed.
 ```
+
+> **{铭牌色} 和 {字块色} 必须根据配色方案替换**（见 `references/style-system.md` §2.1 铭牌配色映射表），❌ 不许留 `cream-colored` 不动。
 
 **要点：**
 - **人物同样要「完整全身」**：`COMPLETE FULL-BODY figure ... NOT cropped by any frame edge`，比例 `about 2.5–3 head-lengths`（Q 版小孩）。封面裁半截同样算不合格。
 - 中文标题用**单引号原样包住**，句末追加 `Make every Chinese character clearly readable and correctly formed.`
-- 标题放在**顶部居中奶油铭牌**上，下方留人物与桌面
-- 配色词（`Deep blue gradient`）随方案替换；字块颜色随铭牌底色替换
+- 标题放在**顶部居中的{铭牌色}铭牌**上，下方留人物与桌面
+- 配色词（`{背景色}`）随方案替换；铭牌色、字块色随铭牌底色替换（见§2.1 铭牌配色映射表）
 - **务必保留** `sculpted from thick 3D polymer-clay letters` / `not flat printed text` 这两句，这是出效果的关键
 - **用 Phase 1 的全身锚点图作 `image1`**（只靠文字描述会漂移）
 
@@ -107,8 +112,10 @@ A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation cover. 
 > **标题与卡片标签都烘进图**（黏土字），不再留空给脚本。
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen table of contents slide. Six rectangular clay cards arranged in a 3x2 grid on a blue clay workbench, each card carrying a small clay icon (a document, a spray bottle, a calculator, a bar chart, stacked cards, a camera). A friendly small clay robot assistant sits at the corner. Clay books, a potted plant and a coffee cup decorate the scene. Deep blue gradient background, soft directional lighting, rich dimensional shadows. At the top center, a cream-colored clay ribbon plaque; on it the title '课程目录' is sculpted from thick 3D raised polymer-clay letters with visible thickness and fingerprints, casting soft shadows. Each card carries a short raised clay-letter label: '数据读取', '数据清洗', '数据汇总', '数据可视化', '批量分类', '照片变表格' — all sculpted as chunky rounded 3D clay letters, deep chocolate-brown, not flat printed text. Tactile soft clay, rounded friendly shapes. Make every Chinese character clearly readable and correctly formed, no garbled characters.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen table of contents slide. Six rectangular clay cards arranged in a 3x2 grid on a {桌面色} clay workbench, each card carrying a small clay icon (a document, a spray bottle, a calculator, a bar chart, stacked cards, a camera). A friendly small clay robot assistant sits at the corner. Clay books, a potted plant and a coffee cup decorate the scene. {背景色} gradient background, soft directional lighting, rich dimensional shadows. At the top center, a {铭牌色} clay ribbon plaque; on it the title '课程目录' is sculpted from thick 3D raised polymer-clay letters with visible thickness and fingerprints, casting soft shadows. Each card carries a short raised clay-letter label: '数据读取', '数据清洗', '数据汇总', '数据可视化', '批量分类', '照片变表格' — all sculpted as chunky rounded 3D clay letters, {字块色}, not flat printed text. Tactile soft clay, rounded friendly shapes. Make every Chinese character clearly readable and correctly formed, no garbled characters.
 ```
+
+> **{铭牌色} / {字块色} 必须根据配色方案替换**，❌ 不许留 `cream-colored` / `deep chocolate-brown` 不动。
 
 > 卡片的**编号**（01–06）也可以要，但中文标签优先。标签控制在 **4–5 个字以内**，字越少越不容易写错。
 > **更稳的做法：目录页背景板只出"卡片 + 小图标"（卡片面上留空），标签文字用 `clay_text.py` 的 `badge` 贴上去** —— 想改哪个标签就改哪个，不用重出图。
@@ -144,10 +151,12 @@ Handmade polymer-clay texture with subtle fingerprints, soft studio lighting, ro
 BACKGROUND PLATE ONLY, no body text. Use image1 as the LOCKED character identity.
 {全身人物描述 + 场景描述同上}
 
-At the top center, a wide cream-colored clay ribbon plaque; on it the title '{标题}' is sculpted from thick 3D polymer-clay letters: raised, chunky, rounded edges, visible clay thickness, subtle fingerprints, casting soft real shadows onto the plaque. Handmade clay lettering, NOT flat printed text.
+At the top center, a wide {铭牌色} clay ribbon plaque; on it the title '{标题}' is sculpted from thick 3D polymer-clay letters: raised, chunky, rounded edges, visible clay thickness, subtle fingerprints, casting soft real shadows onto the plaque. Handmade clay lettering, NOT flat printed text.
 
 Absolutely NO text anywhere in the image except that one title. No watermark, no logo, no numbers.
 ```
+
+> **⚠️ 走 A 路时，{铭牌色} 必须随方案换**（见 §2.1 铭牌配色映射表）。模型默认会把铭牌出成白色，必须显式写死颜色。
 
 > ⚠️ 走 A 路时标题一旦写错就得重出整张图；**要反复改字的页，一律走 B 路**。
 
@@ -184,8 +193,10 @@ Absolutely NO text anywhere in the image except that one title. No watermark, no
 ## 5. 总结 / 结尾页（Summary）· 1024×576
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen closing slide. Theme: {总结主题}. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, wearing {换装}, giving a small encouraging gesture beside a small clay robot that gives a thumbs up, next to a blue clay desk with a laptop showing a completed dashboard, a trophy, a checkmark and stars. Deep blue gradient background with floating clay stars and soft bokeh. On the left, a large cream-colored clay plaque; on it the title '{标题}' is sculpted from thick 3D raised polymer-clay letters with visible thickness, rounded edges and fingerprints, casting soft real shadows. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints and sculpted texture, rounded friendly shapes, soft directional lighting, rich dimensional shadows. Make every Chinese character clearly readable and correctly formed, no garbled characters.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen closing slide. Theme: {总结主题}. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, wearing {换装}, giving a small encouraging gesture beside a small clay robot that gives a thumbs up, next to a {桌面色} clay desk with a laptop showing a completed dashboard, a trophy, a checkmark and stars. {背景色} gradient background with floating clay stars and soft bokeh. On the left, a large {铭牌色} clay plaque; on it the title '{标题}' is sculpted from thick 3D raised polymer-clay letters with visible thickness, rounded edges and fingerprints, casting soft real shadows. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints and sculpted texture, rounded friendly shapes, soft directional lighting, rich dimensional shadows. Make every Chinese character clearly readable and correctly formed, no garbled characters.
 ```
+
+> **{铭牌色} / {字块色} 必须根据配色方案替换**，❌ 不许留 `cream-colored` 不动。
 
 ---
 
@@ -201,7 +212,7 @@ Keep everything unchanged, including the clay lettering and its sculpted 3D text
 
 **改字的写法**（用户说"标题改成 XX"）：
 ```
-Keep the entire scene unchanged. Only replace the clay lettering on the cream plaque with '{新文字}', sculpted from the same thick 3D raised polymer-clay letters, same color, same thickness, same soft shadows, casting real shadow on the plaque. Handmade clay lettering, not flat printed text. Make every Chinese character clearly readable and correctly formed.
+Keep the entire scene unchanged. Only replace the clay lettering on the {铭牌色} plaque with '{新文字}', sculpted from the same thick 3D raised polymer-clay letters, same color ({字块色}), same thickness, same soft shadows, casting real shadow on the plaque. Handmade clay lettering, not flat printed text. Make every Chinese character clearly readable and correctly formed.
 ```
 
 ---

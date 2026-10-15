@@ -68,13 +68,45 @@
 | **薄荷绿+粉 Mint+Pink** | `mint-green with pink accents` | `mint clay desk, pink props` | 治愈、健康、女性向 |
 | **青蓝 Cyan-blue** | `clean cyan-blue gradient` | `cyan clay desk` | 清爽、效率、校园/办公 |
 
+---
+
+#### 【铭牌配色映射表】（换色系时铭牌必须同步换色，❌ 不许默认用 cream）
+
+> **问题背景**：所有 prompt 模板里铭牌默认写 `cream-colored`，换色系时如果不显式改铭牌颜色，模型会把整张图的底部/铭牌区出成大片白色（实测用户skill P07-P10 底带白占比 46-77%，严重超标）。八六原版同色系下底带白仅 0.1-1.5%。
+>
+> **原则**：铭牌颜色必须与主色方案协调——要么是同色系深浅变化，要么是互补/对比色（需保证文字可读）。
+
+| 主色方案 | 铭牌颜色（prompt 词） | 字块颜色 | 说明 |
+|---|---|---|---|
+| **深蓝 Deep Blue** | `dark navy blue clay plaque` | `cream-white clay letters` | 深蓝铭牌+奶油字，高对比 |
+| **紫色 Purple** | `deep violet clay plaque` | `cream-white clay letters` | 紫铭牌+奶油字 |
+| **橙色 Orange** | `warm terracotta clay plaque` | `cream-white clay letters` | 橙铭牌+奶油字 |
+| **绿色 Green** | `deep forest green clay plaque` | `cream-white clay letters` | 绿铭牌+奶油字 |
+| **莫兰迪 ①-⑦** | `muted [套色] clay plaque` | `cream-white clay letters` | 例：灰粉套→`muted dusty rose clay plaque` |
+| **马卡龙 ①-⑦** | `pastel [套色] clay plaque` | `deep brown clay letters` | 马卡龙太浅，铭牌用 pastel，字用深棕保对比 |
+| **彩虹 Rainbow** | `multi-colored segmented clay plaque (red/orange/yellow/green/blue/purple segments)` | 每段对应深/奶油色 | 彩虹铭牌分段染色 |
+| **奶杏 Cream** | `warm apricot clay plaque` | `deep chocolate-brown clay letters` | 杏色铭牌+深棕字 |
+| **薄荷绿+粉** | `mint-green clay plaque with pink accent stripes` | `cream-white clay letters` | 薄荷铭牌+粉条纹点缀 |
+| **青蓝 Cyan** | `cyan-blue clay plaque` | `cream-white clay letters` | 青蓝铭牌+奶油字 |
+
+**铭牌 prompt 写法示例**（替换 `{plaque_color}` 为上方表格对应值）：
+```
+At the top center, a wide {plaque_color} clay ribbon plaque; on it, the title '{标题}' is sculpted from thick 3D polymer-clay letters: raised, chunky, rounded edges, {letter_color}, visible thickness and fingerprints on every letter, casting soft real shadows onto the plaque.
+```
+
+**底框/通栏带写法**（换色系时同步）：
+- 四色通栏：`a bottom full-width bar with four clay segments in [主色深]/[主色中]/[主色浅]/[对比色]`
+- 单色通栏：`a bottom full-width bar in solid [主色] clay with [字色] raised letters`
+- 禁止写 `white bar` / `cream bar` / `white frame`——除非选的是「奶杏 Cream」套色
+
 **配色通用规则（任何色系都适用）：**
 1. **一套之内只用一个色系 / 一个套色**（一致性 > 多样）；跨套课件可整体换色。
-2. **背景仍是深色渐变 + 暖奶油铭牌**——先把"暖奶油铭牌（偏黄 rgb(218,192,153)，不是纯白）+ 深背景"这对固定关系保住，再换强调色色相。
+2. **背景 + 铭牌 + 底框三线联动变色**——换色系时三处一起换，别只换背景。铭牌颜色必须随主色方案走（见下方铭牌配色映射表）。
 3. **甜系（马卡龙/奶杏/薄荷粉）要把背景压深一点**，否则浅底浅字对比不够、发飘；用 `deep-toned` 而不是 `light`。
 4. **彩虹系不是"每样东西随便上色"**，是"每个并列项/卡片各给一个饱和但和谐的主色"，仍要留 60% 深背景。
-5. 色系写进 prompt 时，**同时替换"道具/桌面/背景"三处**，别只换背景——否则画面会半边新色半边旧色。
-6. **⚠️ 细节框也跟着变色，见 §2.2（这条最容易做错）。**
+5. 色系写进 prompt 时，**同时替换"道具/桌面/背景/铭牌/底框"五处**，别只换背景——否则画面会半边新色半边旧色。
+6. **⚠️ 铭牌是重灾区**：模型默认把铭牌出成纯白/冷奶油，必须显式写死配色，否则底框白色率会飙到 50%+（实测数据：用户skill P07-P10 底带白占比 46-77%，严重超标）。见【铭牌配色映射表】。
+7. **⚠️ 细节框也跟着变色，见 §2.2（这条最容易做错）。**
 
 **⚠️ 换色后 `tone_match.py` 的坑：**
 - `--hue-ramp`（253/277/296 三紫锚点）是**紫专用**，非紫配色**不要用它**，否则会把整幅往紫里拽。
