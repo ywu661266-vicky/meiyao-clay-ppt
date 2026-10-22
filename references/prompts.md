@@ -1,27 +1,27 @@
-# 提示词模板（已验证）
+# 提示词模板（已验证 · 2026-10-22 按"满意版"重写）
 
-> ## ⚠️ 第一性原理：字和图都要黏土，分件做、最后贴成一体
+> ## 唯一路径：一页 = 一张 1920×1080 的整图，字全部烘进去
 >
-> - **背景板（ImageGen）**：黏土场景 + **完整全身人物** + 给文字留白；**不要**在整页里写正文。
-> - **黏土件（`scripts/clay_text.py`）**：所有文字——大标题 / 正文 / 标签——**单独捏成黏土件**，
->   再用 `scripts/compose_page.py` 贴回画面。改字只改字符串，不重出图。
+> - **画布**：`size:"1920x1080"`（16:9）。**不许 1536×1024（3:2）**——那是白边的源头。
+> - **结构**：横幅标题 + 副标题 + N 个色块面板 + 底部结论条，**一页 ≥4 个信息块**。
+> - **文字**：这一页要上屏的中文**全部原样写进 prompt、用单引号括起来**，句末加
+>   `Make every Chinese character clearly readable and correctly formed, no garbled characters.`
+> - **材质**：`handmade polymer-clay diorama, subtle fingerprints, soft directional light, rich dimensional shadows, not flat, not vector`
+> - **人物**：出现就"完整全身"，并把锚点图作为 `image1` 传入锁脸。
 >
-> **错法 1（必翻车）：** 让模型在整页里写正文 → 中文一多必错字乱码（实测出过"抓技技能 / 技拔卡"），
-> 而且改一个字就得重出整张图。
-> **错法 2（一眼假）：** 正文用**扁平字体的文本框**叠在图上 → 没厚度没投影，不在黏土的光照里，明显分家。
+> ### 🚫 三条硬禁止（旧版的逃生口，已封）
+> 1. **不许**"背景板留白 + 事后贴字"当主路——成品不是用户要的那版。
+> 2. **不许**在图上叠扁平字体文本框——没厚度没投影，一眼分家。
+> 3. **不许**写"想省事也可以…"这类并列选项。**规则里只准有一条路。**
 >
-> **规则：**
-> 1. 背景板 prompt 必须写清"**哪块留白、留白区禁止出任何东西**"。
-> 2. **A 路**：让模型顺带烘 **≤8 字** 的黏土标题（省一次贴字，但字要重出才能改）。
->    **B 路（推荐）**：背景板**一个字都不出**，标题也交给 `clay_text.py` —— 字数、位置、颜色全可控。
-> 3. **正文一律走 `clay_text.py` 的 `card` 版式**（黏土卡片 + 清晰文字）——这是"字多又一体"的解法。
-> 4. 第 0 节的"黏土字材质句"只在**走 A 路**（让模型烘字）时才需要写。
+> `clay_text.py` / `compose_page.py` 只作**改字补丁**（用户只想改一两个字、不想重出整图时用），见 §4.1。
 >
 > 核心写法：**场景与材质用英文（模型理解更稳），要出现在图上的中文原样写进 prompt 并用单引号括起来。**
 >
 > **场景从哪来？** 不要每次现编——封面场景从 `references/style-library.md`【封面款式库 CV1–CV6】选，内页场景从【内页款式库 IN1–IN14】选，人物款式从【人物款式库 A–F】选。**换场景块 = 换花样；逐字不动的人物段 + 参考图 = 保一致。**
 
 ---
+
 
 ## 0. 黏土立体字（Clay Lettering）标准描述段
 
@@ -86,117 +86,150 @@ The SAME character appears {N} times in this scene, each instance with the ident
 
 ---
 
-## 2. 封面（Cover）· 1024×576
+## 2. 封面（Cover）· 1920×1080
 
-> 用途：整页效果确认图。**主标题以黏土立体字烘进图。**
-> 场景不要每次现编——从 `references/style-library.md`【封面款式库 CV1–CV6】任选一个场景块替换下面的桌面场景（云岛 / 工具台 / 知识书架 / 直播间 / 咖啡工位 / 阶梯图书馆），人物段照旧不动。
+> 用途：整页效果确认图。**标题、副标题、署名全部烘进图**（黏土立体字），不分层贴。
+> 场景从 `references/style-library.md`【封面款式库 CV1–CV6】任选一个场景块替换桌面场景，人物段照旧不动。
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation cover. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing upright in the scene, COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, with clear empty margin above her hair and below her shoes. She wears {换装，见 character-style.md 换装清单}. She is placed inside the scene, interacting with it, sharing the same light as the props. On the desk: a laptop showing a colorful spreadsheet of cells, clay books, a potted plant, a coffee mug, small clay star decorations. {背景色} gradient background with scattered clay stars. At the top center, a wide {铭牌色} clay ribbon plaque; on it, the title '{标题}' is sculpted from thick 3D polymer-clay letters: raised, chunky, rounded edges, {字块色} clay, visible thickness and fingerprints on every letter, casting soft real shadows onto the plaque. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints, rounded friendly shapes, soft directional lighting, rich dimensional shadows. High-end educational presentation cover. Make every Chinese character clearly readable and correctly formed.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation cover, 1920x1080. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing upright in the scene, COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, with clear empty margin above her hair and below her shoes. She wears {换装，见 character-style.md 换装清单}. She is placed inside the scene, interacting with it, sharing the same light as the props. On the desk: a laptop, clay books, a potted plant, a coffee mug, small clay star decorations. {背景色} gradient background with scattered clay stars.
+
+COMPOSITION (must be exactly this): a large {铭牌色} clay ribbon plaque occupying the TOP-LEFT area; below it two stacked pill labels.
+
+TEXT, all sculpted as thick 3D raised polymer-clay letters with visible thickness, rounded edges, fingerprints and soft real shadows — NOT flat printed text:
+- On the big plaque, the main title '{主标题}' in {字块色} clay letters, the largest element.
+- On the first pill, the subtitle '{副标题}'.
+- On the second pill, '{署名/课程信息}'.
+
+Tactile soft clay with fingerprints, rounded friendly shapes, soft directional lighting, rich dimensional shadows. High-end educational presentation cover. Make every Chinese character clearly readable and correctly formed, no garbled characters. No watermark, no logo, no page number.
 ```
 
 > **{铭牌色} 和 {字块色} 必须根据配色方案替换**（见 `references/style-system.md` §2.1 铭牌配色映射表），❌ 不许留 `cream-colored` 不动。
+> 小头像徽章（可选）用 `image2` 传用户的照片，让模型在角上捏一枚小圆牌，写 `'{分享人}'`。
 
 **要点：**
-- **人物同样要「完整全身」**：`COMPLETE FULL-BODY figure ... NOT cropped by any frame edge`，比例 `about 2.5–3 head-lengths`（Q 版小孩）。封面裁半截同样算不合格。
-- 中文标题用**单引号原样包住**，句末追加 `Make every Chinese character clearly readable and correctly formed.`
-- 标题放在**顶部居中的{铭牌色}铭牌**上，下方留人物与桌面
-- 配色词（`{背景色}`）随方案替换；铭牌色、字块色随铭牌底色替换（见§2.1 铭牌配色映射表）
-- **务必保留** `sculpted from thick 3D polymer-clay letters` / `not flat printed text` 这两句，这是出效果的关键
-- **用 Phase 1 的全身锚点图作 `image1`**（只靠文字描述会漂移）
+- 尺寸必须是 **1920×1080**；出来的不是 16:9 就当场重出。
+- **人物要「完整全身」**：`COMPLETE FULL-BODY figure ... NOT cropped by any frame edge`，比例 `about 2.5–3 head-lengths`（Q 版小孩）。
+- 中文**原样写进 prompt 并用单引号括起来**，句末保留 `clearly readable and correctly formed`。
+- **用 Phase 1 的全身锚点图作 `image1`**（只靠文字描述会漂移）。
+- 🚫 不要"空牌匾 + 事后贴字"——那是被否掉的旧路。
 
 ---
 
-## 3. 目录页（Table of Contents）· 1024×576
+## 3. 目录页（Table of Contents）· 1920×1080
 
-> **标题与卡片标签都烘进图**（黏土字），不再留空给脚本。
+> **标题与 4–6 个卡片标签全部烘进图。**
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen table of contents slide. Six rectangular clay cards arranged in a 3x2 grid on a {桌面色} clay workbench, each card carrying a small clay icon (a document, a spray bottle, a calculator, a bar chart, stacked cards, a camera). A friendly small clay robot assistant sits at the corner. Clay books, a potted plant and a coffee cup decorate the scene. {背景色} gradient background, soft directional lighting, rich dimensional shadows. At the top center, a {铭牌色} clay ribbon plaque; on it the title '课程目录' is sculpted from thick 3D raised polymer-clay letters with visible thickness and fingerprints, casting soft shadows. Each card carries a short raised clay-letter label: '数据读取', '数据清洗', '数据汇总', '数据可视化', '批量分类', '照片变表格' — all sculpted as chunky rounded 3D clay letters, {字块色}, not flat printed text. Tactile soft clay, rounded friendly shapes. Make every Chinese character clearly readable and correctly formed, no garbled characters.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen table of contents slide, 1920x1080. {背景色} deep gradient background with scattered clay stars and soft vignette.
+
+COMPOSITION: a wide {铭牌色} clay ribbon plaque across the TOP CENTER. Below it, {N} rounded rectangular clay cards in a {2x2 / 3x2} grid, each card in a different color from the palette ({紫}/{绿}/{橙}/{红}) and each carrying a small clay icon ({图标清单}). At the bottom, one long cream clay strip holding a one-line summary.
+
+TEXT, all sculpted as thick 3D raised polymer-clay letters, NOT flat printed text:
+- Plaque: '{课程目录}'
+- Card 1: '{标签1}'   Card 2: '{标签2}'   Card 3: '{标签3}'   Card 4: '{标签4}'
+- Bottom strip: '{一句话概括}'
+
+Tactile soft clay with fingerprints, rounded friendly shapes, soft directional lighting, rich dimensional shadows. Make every Chinese character clearly readable and correctly formed, no garbled characters. No watermark, no logo, no page number.
 ```
 
-> **{铭牌色} / {字块色} 必须根据配色方案替换**，❌ 不许留 `cream-colored` / `deep chocolate-brown` 不动。
-
-> 卡片的**编号**（01–06）也可以要，但中文标签优先。标签控制在 **4–5 个字以内**，字越少越不容易写错。
-> **更稳的做法：目录页背景板只出"卡片 + 小图标"（卡片面上留空），标签文字用 `clay_text.py` 的 `badge` 贴上去** —— 想改哪个标签就改哪个，不用重出图。
+> **{铭牌色} / 面板四色 必须按配色方案写死**，❌ 不许留 `cream-colored` 不动。
+> 标签 **4–6 个字**最稳；编号（01/02…）直接写进标签，例如 `'01 专家'`。
 
 ---
 
-## 4. 内容页背景板 · 1024×576（A 路 / B 路）
+## 4. 内容页 · 1920×1080（一页一张整图）
 
-> 内容页的背景板只负责**画面**：完整全身人物 + 场景 + 留白。
-> **A 路** = 让模型顺带烘一个 ≤8 字的黏土标题；**B 路（推荐）** = 一个字都不出，标题和正文全交给 `clay_text.py`。
+> 每页都必须：**横幅标题 + 副标题 + ≥4 个信息块 + 底部结论条**，字全部烘进图。
 > 场景块从 `references/style-library.md`【内页款式库 IN1–IN14】任选，相邻页不重复。
-> **两条路都必须把 Phase 1 的全身锚点图作为 `image1` 传入。**
+> 必须把 Phase 1 的全身锚点图作为 `image1` 传入。
 
-**B 路模板（推荐：背景板完全不出字）**
-
-```
-BACKGROUND PLATE ONLY. Use image1 as the LOCKED character identity.
-{把第 1 节那段全身人物描述逐字粘过来}
-Create a premium handcrafted polymer-clay diorama, 16:9 widescreen presentation slide background, {配色} gradient wall.
-
-LAYOUT: The RIGHT 40% of the frame holds the girl as a COMPLETE FULL-BODY figure standing on a small round clay podium — her ENTIRE body from the top of her hair down to her shoes completely visible inside the frame, head to toe, NOT cropped by any frame edge, NOT hidden behind furniture or props, with clear empty margin above her hair and below her shoes. Keep her face locked to the reference image: identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion. She wears {换装}. Beside her feet only {道具1} and {道具2}.
-
-The LEFT 55% of the frame must be a COMPLETELY EMPTY smooth gradient wall — NO cards, NO boxes, NO shelves, NO icons, NO frames, NO props in the left area; it is deliberately reserved blank space for text that will be added later.
-
-Absolutely NO text, NO letters, NO numbers, NO labels anywhere in the image — no title, no plaque, no signage. The whole frame is picture only.
-
-Handmade polymer-clay texture with subtle fingerprints, soft studio lighting, rounded friendly shapes, unmistakably handmade clay, not photorealistic, not anime, not glossy plastic. No watermark, no logo.
-```
-
-**A 路模板（让模型顺带烘标题，省一次贴字）**
+### 4-A 骨架：横幅标题 + 四色面板（最常用）
 
 ```
-BACKGROUND PLATE ONLY, no body text. Use image1 as the LOCKED character identity.
-{全身人物描述 + 场景描述同上}
+A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation slide, 1920x1080. {背景色} deep gradient background with soft vignette and a few clay stars.
 
-At the top center, a wide {铭牌色} clay ribbon plaque; on it the title '{标题}' is sculpted from thick 3D polymer-clay letters: raised, chunky, rounded edges, visible clay thickness, subtle fingerprints, casting soft real shadows onto the plaque. Handmade clay lettering, NOT flat printed text.
+COMPOSITION:
+- A wide deep-purple clay ribbon plaque across the TOP holding the section title.
+- Directly under the plaque, one small cream clay pill holding a subtitle.
+- The MIDDLE holds exactly {4} rounded clay panels in one row, each panel a different palette color ({紫}/{绿}/{橙}/{红}), each with ONE clay icon on top and a short clay label at its bottom.
+- Across the BOTTOM, one long dark clay strip holding a one-line takeaway, with small clay dots between items.
 
-Absolutely NO text anywhere in the image except that one title. No watermark, no logo, no numbers.
+TEXT, all sculpted as thick 3D raised polymer-clay letters with visible thickness and soft real shadows, NOT flat printed text:
+- Plaque: '{本页标题}'
+- Subtitle pill: '{一句话副标题}'
+- Panel labels: '{标签1}' '{标签2}' '{标签3}' '{标签4}'
+- Bottom strip: '{结论一句话}'
+
+Tactile soft clay with subtle fingerprints, rounded friendly shapes, soft directional lighting, rich dimensional shadows, not flat, not vector. Make every Chinese character clearly readable and correctly formed, no garbled characters. No watermark, no logo, no page number.
 ```
 
-> **⚠️ 走 A 路时，{铭牌色} 必须随方案换**（见 §2.1 铭牌配色映射表）。模型默认会把铭牌出成白色，必须显式写死颜色。
+**实例（已通过验收的写法）**：标题 `'三、连接器：给它一扇通往外面的门'`、副标题 `'把外部服务接进来'`、
+四个面板 `'查数据' '调服务' '管文件' '发通知'`、底部条 `'已支持 QQ邮箱·腾讯文档·腾讯会议·TAPD·飞书·钉钉 等'`。
 
-> ⚠️ 走 A 路时标题一旦写错就得重出整张图；**要反复改字的页，一律走 B 路**。
+### 4-B 骨架：横幅标题 + 左右对比（VS）
+
+```
+{same 画布/背景/材质段}
+COMPOSITION:
+- Top ribbon plaque with the title.
+- Below it a small cream pill with a one-line question.
+- TWO large clay panels side by side, left in {色A}, right in {色B}; between them a round clay badge with 'VS'.
+- Inside each panel: 1–3 short clay lines.
+- Bottom-right or bottom-left: the character as a COMPLETE FULL-BODY figure pointing at the conclusion; plus one cream pill with the takeaway.
+
+TEXT (all raised clay letters): '{标题}' / '{副标题}' / '{左边标题}' / '{左边1-3条}' / '{右边标题}' / '{右边1-3条}' / 'VS' / '{结论}'
+```
+
+**实例**：`'专家 与 专家团：一张图分清'` + `'一个人干，还是一队人干'` + 左 `'专家 ＝ 一个角色'` / 右 `'专家团 ＝ 一群专家 ＋ 一位团长'`。
+
+### 4-C 骨架：流程带 / 档案清单 / 路线图
+
+见 `references/style-library.md`【三·三十五】20 种版式语汇与 `references/skeleton-library-81.md`。
+要点不变：**标题烘进图、每页 ≥4 块、底部有结论条、相邻页不同版式。**
 
 ---
 
-## 4.1 文字这一层怎么贴（`pages.json` 的 elements）
+## 4.1 改字补丁（**非主路**，只在用户说"只改这几个字"时用）
 
-背景板出完之后，文字全部由 `scripts/clay_text.py` 捏件 + `scripts/compose_page.py` 贴：
+整图已经出好、只想换一两个词、不想重出图时，才用脚本贴字：
+
+```bash
+python scripts/compose_page.py --config pages.json
+```
 
 ```json
 {
-  "bg": "bg/page07_clean.png",
-  "out": "out/page07.png",
+  "bg": "out/page07.png",
+  "out": "out/page07_v2.png",
   "elements": [
-    { "type": "text",  "text": "我踩的坑", "cap": 54, "x": 120, "y": 40, "color": "cream" },
-    { "type": "card",  "head": "只抄了描述文字",
-      "body": "人物每页都变样，一个啾啾变成两个丸子头，脸也不一样",
-      "width": 524, "x": 40, "y": 96, "accent": "orange" },
-    { "type": "card",  "head": "想让图里直接写字",
-      "body": "让模型在画面里画中文，结果全是错字乱码，还塞不下内容",
-      "width": 524, "x": 40, "y": 210 },
-    { "type": "badge", "text": "3 小时实操课", "cap": 32, "x": 70, "y": 470, "color": "orange" }
+    { "type": "text",  "text": "新的标题", "cap": 54, "x": 120, "y": 40, "color": "cream" }
   ]
 }
 ```
 
-- `type:"text"` → 黏土字（大标题 / 章节字 / 强调短语），**字数不限**
-- `type:"card"` → 黏土卡片（正文首选），`head` 一行标题 + `body` 自动换行，一条 body 建议 **≤ 26 字**
-- `type:"badge"` → 黏土胶囊标签（徽章 / 页脚 / 分类）
-- 一页放 **3–5 个 card** 比较舒服；卡片横向留白要避开人物那一侧
+> ⚠️ 这条路的成品**稍逊于整图**（贴上去的字和画面光照很难完全一致），
+> 只在"改字成本 < 重出图成本"时用；**不要拿它当整套的生产方式**。
 
 ---
 
-## 5. 总结 / 结尾页（Summary）· 1024×576
+## 5. 总结 / 结尾页（Summary）· 1920×1080
+
+> 同其他页：**整页一张图，标题与结论条都烘进去**。
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen closing slide. Theme: {总结主题}. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, wearing {换装}, giving a small encouraging gesture beside a small clay robot that gives a thumbs up, next to a {桌面色} clay desk with a laptop showing a completed dashboard, a trophy, a checkmark and stars. {背景色} gradient background with floating clay stars and soft bokeh. On the left, a large {铭牌色} clay plaque; on it the title '{标题}' is sculpted from thick 3D raised polymer-clay letters with visible thickness, rounded edges and fingerprints, casting soft real shadows. Handmade clay lettering, not flat printed text. Tactile soft clay with fingerprints and sculpted texture, rounded friendly shapes, soft directional lighting, rich dimensional shadows. Make every Chinese character clearly readable and correctly formed, no garbled characters.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen closing slide, 1920x1080. {背景色} deep gradient background with floating clay stars and soft bokeh.
+
+COMPOSITION: a large {铭牌色} clay plaque on the LEFT holding the closing title; on the RIGHT the SAME little kid character from the reference image, COMPLETE FULL BODY from hair to shoes, NOT cropped, giving an encouraging gesture beside a small clay robot; at the BOTTOM a long cream clay strip holding the one-line takeaway.
+
+TEXT, all thick 3D raised polymer-clay letters with real shadows, NOT flat printed text:
+- Plaque: '{结尾标题}'
+- Bottom strip: '{一句话收尾}'
+
+Tactile soft clay with fingerprints, rounded friendly shapes, soft directional lighting, rich dimensional shadows. Make every Chinese character clearly readable and correctly formed, no garbled characters. No watermark, no logo, no page number.
 ```
 
-> **{铭牌色} / {字块色} 必须根据配色方案替换**，❌ 不许留 `cream-colored` 不动。
+> **{铭牌色} 必须根据配色方案替换**，❌ 不许留 `cream-colored` 不动。
 
 ---
 
