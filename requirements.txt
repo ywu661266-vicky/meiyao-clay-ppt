@@ -1,0 +1,11 @@
+# meiyao-clay-ppt 运行依赖（分件合成的脚本全靠这几个）
+# 装法（任选其一）：
+#   pip install -r requirements.txt
+#   或在本机隔离环境：<你的python> -m pip install -r requirements.txt
+#
+# ⚠️ 装完必须跑一次自检，见 SKILL.md「Phase -1 · 环境自检」
+pillow>=10.0
+numpy>=1.24
+scipy>=1.10
+opencv-python-headless>=4.8
+python-pptx>=0.6.21

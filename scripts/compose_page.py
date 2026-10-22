@@ -72,10 +72,29 @@ def _shadow(name):
     return SHADOW.get(str(name).lower(), (40, 30, 78))
 
 
+def _cover(im, size):
+    """等比裁切到目标比例再缩放（cover）——绝不拉变形、绝不留白边"""
+    tw, th = size
+    tr = tw / th
+    w, h = im.size
+    r = w / h
+    if abs(r - tr) < 0.005:
+        return im.resize((tw, th), Image.LANCZOS)
+    if r > tr:                      # 太宽 → 左右各裁掉一点
+        nw = int(round(h * tr))
+        x0 = (w - nw) // 2
+        im = im.crop((x0, 0, x0 + nw, h))
+    else:                           # 太高 → 上下各裁掉一点
+        nh = int(round(w / tr))
+        y0 = (h - nh) // 2
+        im = im.crop((0, y0, w, y0 + nh))
+    return im.resize((tw, th), Image.LANCZOS)
+
+
 def compose(cfg):
     bg = Image.open(cfg["bg"]).convert("RGBA")
     if "size" in cfg:
-        bg = bg.resize(tuple(cfg["size"]), Image.LANCZOS)
+        bg = _cover(bg, tuple(cfg["size"]))
     for el in cfg.get("elements", []):
         t = el.get("type", "text")
         col = _c(el.get("color", "cream"))
