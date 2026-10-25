@@ -7,7 +7,7 @@
 > - **文字**：这一页要上屏的中文**全部原样写进 prompt、用单引号括起来**，句末加
 >   `Make every Chinese character clearly readable and correctly formed, no garbled characters.`
 > - **材质**：`handmade polymer-clay diorama, subtle fingerprints, soft directional light, rich dimensional shadows, not flat, not vector`
-> - **人物**：出现就"完整全身"，并把锚点图作为 `image1` 传入锁脸。
+> - **人物**：出现就"完整全身"；**每次出图传两张参考图**——`image1`＝画风锚（满意版对应页），`image2`＝角色锚点（见 §0.5）。
 >
 > ### 🚫 三条硬禁止（旧版的逃生口，已封）
 > 1. **不许**"背景板留白 + 事后贴字"当主路——成品不是用户要的那版。
@@ -19,6 +19,16 @@
 > 核心写法：**场景与材质用英文（模型理解更稳），要出现在图上的中文原样写进 prompt 并用单引号括起来。**
 >
 > **场景从哪来？** 不要每次现编——封面场景从 `references/style-library.md`【封面款式库 CV1–CV6】选，内页场景从【内页款式库 IN1–IN14】选，人物款式从【人物款式库 A–F】选。**换场景块 = 换花样；逐字不动的人物段 + 参考图 = 保一致。**
+>
+> ### §0.5 画风锚定段（每张图 prompt 首行必加，2026-10-22 新增）
+>
+> ```
+> Keep the EXACT handmade polymer-clay art style of image1: same clay material with fingerprints, same dimensional soft lighting and shadows, same color system, same banner and panel design language, same text rendering quality, same cute and lively character feel. Replace ALL text with the new text below and adjust the scene to the new topic. Do NOT copy any text, letters, numbers or layout wording from image1.
+> ```
+>
+> - `image1` ＝ **画风锚**：满意版对应页（`assets/style-templates/P01–P10.png`；封面 P01 / 目录 P02 / 内容 P03–P09 轮换 / 总结 P10，就近取）
+> - `image2` ＝ **形象锚**：Phase 1 角色锚点图（谁用就是谁的形象）
+> - **缺这一段或缺任一张参考图 = 纯文字抽签 = 呆丑版（已实测根因）。**
 
 ---
 

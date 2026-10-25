@@ -24,8 +24,10 @@
    - 只有画风图：只借**画风**（材质/头身比/五官画法/配色倾向），不抄它的衣服发型（见 §一 的通用复刻规则）。
 2. **没有照片时**：走 §三 的**角色锚点模板**先出一张，让使用者确认"像不像他/她要的形象"，再进封面/内页。
 3. **性别/年龄不锁**：同一张脸**可男可女**（靠发型/衣服/发饰区分），也可做成成人 Q 版——**脸锁、装扮变**。
-4. **一次只出 1 张锚点**（见 §五 出图纪律），确认后该锚点图就是全册的 `image1`。
+4. **一次只出 1 张锚点**（见 §五 出图纪律），确认后该锚点图就是全册每页的 `image2`（角色脸/身份）；`image1` 始终是满意版页（锁 house 画风/版式），两者分工不能混。
 5. **给别人用时的话术**：交付说明里写清"角色锚点用的是谁的/哪张图、要不要换"，让对方能自己替换成自己的形象。
+
+6. **每个角色必须有"强辨识度人设"——这是"认得出是谁"和"不丢 house 风"的双重保险。** 满意版的丸子头＋粉蝴蝶结＋圆框眼镜＋蓝背带裙之所以"明显是 86"，是因为配饰成体系。换任何人时：**保留其照片里的真实特征（发型/眼镜/衣着），并至少保留 1 个标志性配饰**；若照片本身素净（如"衬衫＋领带"），**主动提议 1–2 个签名元素（如保留其领带配色做签名色、加一枚其常用的发饰）并和用户确认**，绝不直接做成"衬衫＋通用笑脸"的模板小孩——那正是"差点意思"的来源。同一套之内这张脸的画法必须逐页完全一致（用 Stage 1 锚点当 image2 保证）。
 
 > 一句话：**画风统一，但"这张脸是谁"由使用者说了算。** 分享出去别人也能生成自己的形象，而不是只有美瑶老师那一个女孩。
 
@@ -38,7 +40,7 @@
 | ⭐⭐⭐ 最满意 | `assets/examples/cover-excel-example.png`、`assets/examples/toc-clay-lettering-example.png`（**都是用户自己的成品**） | **Q 版小孩**：深色头发扎顶髻 + 粉/玫瑰色**蝴蝶结发带**；**圆框眼镜**；圆脸大眼、小嘴微笑、腮红；**蓝色连衣裙（内搭浅色衬衫）**；手工黏土质感；深蓝底 + 漂浮黏土小装饰（星星 / 饼图 / 柱状图） | 用户指着说「跟原版差不多」「蓝衣小人最贴近原版」。**作为画风基准** |
 | ⭐⭐ 达标但呆板 | `examples/character-anchor-example.png`（绿裙）、v2/v3 白西装款 | 丸子头、单一素色长袍、**纯色空背景** | 达标不是最佳；可作备选 |
 | ⭐ 需改进 | 我们做的 v3 / 锚点 A | 高丸子头 + 白袍 + 空背景 + 双手垂放 | 差距在**有无场景道具**、**姿态有没有戏**、**表情**三处 |
-| ❌ 永不出 | **半写实成人戴眼镜女人**（`AI+Excel数据处理实战_黏土风.pptx` 第 1 页那类）、亲子夏令营 3D 黏土 | 写实人脸、成人比例、抽象低幼 | 用户原话：「严重不要的丑的、吓人的，**永远不可能生成那样**」 |
+| ⚠️ 旧判已放宽（2026-10-26） | 当年那张「半写实成人戴眼镜女人」（`AI+Excel数据处理实战_黏土风.pptx` 第 1 页那类） | 崩在三样叠一起：**写实人脸 + 成人比例 + 抽象低幼感** | 2026-10-11 用户判死刑（原话「永远不可能生成那样」）；**2026-10-26 用户改口：写实本身可以做，只要使用人点名要**——干净、高完成度的写实现在是合法选项。区别在于「崩」和「写实」，别再把两者混为一谈 |
 
 **多 IP 风格保留**：`assets/style-refs/` 里的实物黏土小人照片（Q 版联盟 / 古风汉服 / 棕发大眼 / 糖果小童 / 粉樱治愈）是**允许的其他 IP 画风**——用户明确喜欢「IP 不止一款小人」。（**注意**：复刻 style-refs 时**只借"画风"**——材质 / 头身比 / 五官画法，**别抄它的衣服发型**。）
 
@@ -50,7 +52,7 @@
 
 | 维度 | 正解 | 常见错法 |
 |---|---|---|
-| 头身比 | **约 2.5–3 头身的 Q 版小孩**（头大、身小、手脚短圆） | 拉成 4 头以上"少年/成人" ❌ |
+| 头身比 | **由使用人在 Phase 0 选定的风格决定**：选 Q 版 → **约 2.5–3 头身**（头大、身小、手脚短圆）；选写实 → 成人真实比例 | ❌ 同一套之内两套混用（一页 Q 版一页写实）＝出品不稳定；❌ 使用人没表态就擅自按成人比例生成 |
 | 眼镜 | **圆框眼镜**（圆框醒目、占脸大） | 无眼镜 / 方框 / 细金属框 ❌ |
 | 头发 | **深色（黑 / 深棕）**；八六版蓬松短发，用户版**顶髻 + 粉色蝴蝶结发带** | 亮色发 / 写实发丝 ❌ |
 | 脸 | 圆脸、大眼、小嘴微笑、腮红，**可爱**；表情随动作变 | 写实五官 / 尖下巴 / 面无表情 ❌ |
@@ -64,28 +66,56 @@
 
 ---
 
-## 三、角色锚点模板（**Q 版小孩 · 已按 2.5–3 头身重写**）
+## 三、角色锚点模板（**2026-10-26 重写：复刻 image2 本人，绝不套写死人物**）
 
-出 **1 张 1024×1024** 方图，立刻给用户确认。**一次只出 1 张**，不合格只改一处再重出 1 张。
+> ⚠️ **2026-10-26 重大纠错（推翻旧版）**：旧版把「粉色蝴蝶结 + 大圆框眼镜 + 蓝色背带裙」写进了模板。
+> 后果：任何使用者都被套成那一个女孩——男生（派派：寸头 / 衬衫领带 / 不戴眼镜）被直接生成成**女生**；
+> 用户本人（黑长发披肩 / 不戴眼镜 / 白西装）也会被套上丸子头＋眼镜。
+> **模板里绝不准写死具体发型 / 发饰 / 眼镜 / 服装，这些一律从 image2（使用者照片）逐项读取。**
+
+**第一步 · 先让使用人选「形象风格」（Phase 0 必问；选定后全册锁死，不许中途改）：**
+
+> 用户原话（2026-10-26）：「你可以问使用人，他是想要 Q 版还是写实？如果他要写实，那就写实，如果他要 Q 版，那就必须是 Q 版形象。」
+
+| 使用人选择 | 比例 | prompt 必须写的关键句 |
+|---|---|---|
+| **Q 版**（默认，= 满意版 house 小人） | 约 **2.5–3 头身**（大头小身、手脚短圆） | `cute chibi figure, about 2.5–3 head-lengths` ＋ `NOT photorealistic, NOT a real-person photograph` |
+| **写实**（使用人明确点名才用） | 成人真实比例 | `lifelike adult proportions, realistic handcrafted clay sculpture` |
+
+> 两者都合法，不互相排斥：**要写实就写实，要 Q 版就必须是 Q 版。**
+> 选定后全册一致——**同一套里一会儿 Q 版一会儿写实，才是"出品不稳定"的真凶**（2026-10-25 派派前后两张就飘了：一张 Q 版、一张写实）。
+
+出 **1 张 1024×1024** 方图，立刻给使用人确认。**一次只出 1 张**，不合格只改一处再重出 1 张。
 
 ```
-A single premium handcrafted polymer-clay figurine of a cute little kid presenter, about 2.5–3 head-lengths tall (a big round head on a small compact body, short rounded limbs — NOT a tall slender figure, NOT an adult, NOT a 4-head model). COMPLETE FULL BODY from the top of the hair down to the shoes, standing upright, facing the camera, entire body completely visible inside the frame, head to toe, NOT cropped by any frame edge, with clear empty margin above the hair and below the shoes.
+{PRODUCT} premium handcrafted polymer-clay figurine. COMPLETE FULL BODY from the top of the hair down to the shoes, standing upright, facing the camera, entire body completely visible inside the frame, head to toe, NOT cropped by any frame edge, with clear empty margin above the hair and below the shoes.
 
-Hair: dark (black or deep brown) hair gathered into a neat top bun, with a soft side-swept fringe, and a rose/pink bow headband across the top of the head.
+IDENTITY — reproduce the person in image2 EXACTLY. Read each trait off image2, do NOT invent or substitute:
+ gender : {male | female}                 <-- MUST match image2, never flip
+ hair   : {copy image2's real hairstyle, length and colour}
+ glasses: {copy image2: wear them if worn; omit entirely if not worn}
+ outfit : {copy image2's clothing, OR swap to the outfit the user asked for — see 可换装清单}
 
-Face: big round cute face, large expressive eyes with clear highlights, small smiling mouth, soft rosy blush. Wearing large ROUND glasses on the nose.
-
-Outfit: a blue pinafore dress over a light cream shirt, tiny rounded shoes. (Clothes may change page to page — see the outfit list.)
-
-Material: handmade polymer clay with visible fingerprints, sculpting marks, and matte soft surfaces on every form; NOT photorealistic, NOT glossy plastic toy, NOT flat anime line art.
-
-Lighting: soft even studio light with gentle contact shadow at the feet. Background: plain light warm grey seamless backdrop for later compositing. No text, no watermark, no letters, no numbers.
+Material : handmade polymer clay with visible fingerprints, sculpting marks, and matte soft surfaces on every form.
+           [Q版时补] NOT photorealistic, NOT glossy plastic toy, NOT flat anime line art.
+Lighting : soft even studio light with gentle contact shadow at the feet.
+Background: plain light warm grey seamless backdrop for later compositing.
+No text, no watermark, no letters, no numbers.
 ```
+
+### 🚫 IDENTITY 三条禁令（违反任何一条＝废图，当场重出）
+
+1. **绝不许改性别。** 男性不许生成成女性，女性不许生成成男性。
+   > 2026-10-25 事故：派派（男生、寸头、浅蓝衬衫＋酒红斜纹领带）被 prompt 里的 `young Chinese woman` 直接改成女生，是最严重的一类 bug。
+2. **绝不许凭空加 / 减眼镜。** image2 不戴眼镜就不准加圆框眼镜；image2 戴着就不准摘。
+3. **绝不许替换发型。** 黑长发不许变丸子头，寸头不许变长发或加刘海。发型逐项按 image2 抄。
+
+> 一句话：**使用人传什么人，就是什么人。黏土风只负责给他／她做身子和材质，不负责重新发明他／她。**
 
 ### 脸部锁定段（**同一套之内每页必抄，一字不改；只锁脸，不锁衣**）
 
 ```
-Keep EXACTLY the same little kid character as the reference image: identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical cute clay-material look and identical 2.5–3-head-length chibi proportion. Only the clothing, the pose and the surrounding scene may change.
+Keep EXACTLY the same character as the reference anchor image: identical GENDER, identical face shape and facial features, identical HAIRSTYLE, identical glasses state (worn or absent — never add or remove), identical clay-material look, and identical body proportion. ONLY the clothing, the pose and the surrounding scene may change.
 ```
 
 ### 可换装清单（换衣服 / 姿势 / 场景即可换页，绝不动脸）
