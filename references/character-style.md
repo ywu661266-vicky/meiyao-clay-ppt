@@ -81,7 +81,8 @@
 
 | 维度 | 正解 | 常见错法 |
 |---|---|---|
-| 头身比 | **由使用人在 Phase 0 选定的风格决定**：选 Q 版 → **约 2.5–3 头身**（头大、身小、手脚短圆）；选写实 → 成人真实比例 | ❌ 同一套之内两套混用（一页 Q 版一页写实）＝出品不稳定；❌ 使用人没表态就擅自按成人比例生成 |
+| 头身比 | **由使用人在 Phase 0 选定的风格决定**：选 Q 版 → **约 2.5–3 头身**（头大、身小、手脚短圆）；选写实 → 成人真实比例 | ❌ 同一套之内两套混用（一页 Q 版一页写实）＝出品不稳定；❌ 使用人没表态就擅自按成人比例生成；❌ **Q 版把所有人捏成同一张脸**（Q 版是画风，不是同款脸） |
+| 脸型 / 五官比例 | **Q 版也必须因人而异**：照片里脸偏窄（如派派）就捏窄脸、脸颊偏圆就圆脸，眉眼间距、鼻子大小、下颌形状都按照片来。判据＝**遮住衣服也认得出是谁** | ❌ 用一张通用卡通脸套所有人（"丑八怪"的另一种死法：像了 Q 版、但不像本人） |
 | 眼镜 | **圆框眼镜**（圆框醒目、占脸大） | 无眼镜 / 方框 / 细金属框 ❌ |
 | 头发 | **深色（黑 / 深棕）**；八六版蓬松短发，用户版**顶髻 + 粉色蝴蝶结发带** | 亮色发 / 写实发丝 ❌ |
 | 脸 | 圆脸、大眼、小嘴微笑、腮红，**可爱**；表情随动作变 | 写实五官 / 尖下巴 / 面无表情 ❌ |
@@ -105,6 +106,9 @@
 **第一步 · 先让使用人选「形象风格」（Phase 0 必问；选定后全册锁死，不许中途改）：**
 
 > 用户原话（2026-10-26）：「你可以问使用人，他是想要 Q 版还是写实？如果他要写实，那就写实，如果他要 Q 版，那就必须是 Q 版形象。」
+>
+> **🚨 即使用户已经上传了参考图，也必须先问这一句。** 用户原话：「在做之前，就他给了这个参考图之后你必须问用户，他是想做 Q 版的还是写实的。」
+> 参考图只说明"画风长什么样"，不说明"他这次要哪种"——有人给 Q 图自己要写实，有人给写实图自己要 Q 版。不问就出＝白烧积分。
 
 | 使用人选择 | 比例 | prompt 必须写的关键句 |
 |---|---|---|
@@ -116,14 +120,25 @@
 
 出 **1 张 1024×1024** 方图，立刻给使用人确认。**一次只出 1 张**，不合格只改一处再重出 1 张。
 
+⚠️ **半身照也要生全身（2026-10-26 用户当面纠正）**：使用人可能上传半身照（证件照、职场照），**绝对不许只生成半身**——必须输出**完整全身**（头顶上方有留白、脚下有留白、完整站姿）。prompt 里必须写：
+```
+COMPLETE FULL BODY from the top of the hair down to the shoes, standing upright, facing the camera, entire body completely visible inside the frame, head to toe, NOT cropped by any frame edge, with clear empty margin above the hair and below the shoes.
+```
+
 ```
 {PRODUCT} premium handcrafted polymer-clay figurine. COMPLETE FULL BODY from the top of the hair down to the shoes, standing upright, facing the camera, entire body completely visible inside the frame, head to toe, NOT cropped by any frame edge, with clear empty margin above the hair and below the shoes.
 
 IDENTITY — reproduce the person in image2 EXACTLY. Read each trait off image2, do NOT invent or substitute:
  gender : {male | female}                 <-- MUST match image2, never flip
+ face   : {copy image2's real face shape and feature proportion — narrow / round / long jaw,
+           eye spacing, nose size, cheek fullness; KEEP the person recognizable}
  hair   : {copy image2's real hairstyle, length and colour}
  glasses: {copy image2: wear them if worn; omit entirely if not worn}
  outfit : {copy image2's clothing, OR swap to the outfit the user asked for — see 可换装清单}
+
+⚠️ The Q-version is a STYLE, not a fixed face. Do NOT reuse one generic cartoon face for everyone.
+   A narrower face in image2 must stay narrower; a rounder face must stay rounder.
+   RULE: if the clothing is covered up, one must still recognize WHO this is — while clearly seeing it is a chibi Q figure.
 
 Material : handmade polymer clay with visible fingerprints, sculpting marks, and matte soft surfaces on every form.
            [Q版时补] NOT photorealistic, NOT glossy plastic toy, NOT flat anime line art.
@@ -138,6 +153,7 @@ No text, no watermark, no letters, no numbers.
    > 2026-10-25 事故：派派（男生、寸头、浅蓝衬衫＋酒红斜纹领带）被 prompt 里的 `young Chinese woman` 直接改成女生，是最严重的一类 bug。
 2. **绝不许凭空加 / 减眼镜。** image2 不戴眼镜就不准加圆框眼镜；image2 戴着就不准摘。
 3. **绝不许替换发型。** 黑长发不许变丸子头，寸头不许变长发或加刘海。发型逐项按 image2 抄。
+4. **绝不许用"通用卡通脸"糊弄。** Q 版不等于同款脸：脸型宽窄、五官比例必须按照片走，遮住衣服也要认得出是谁（2026-10-26 用户点名"派派脸小一点，但一眼看得出是他"）。
 
 > 一句话：**使用人传什么人，就是什么人。黏土风只负责给他／她做身子和材质，不负责重新发明他／她。**
 
