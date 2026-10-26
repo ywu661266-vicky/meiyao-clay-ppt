@@ -26,7 +26,9 @@
 > Keep the EXACT handmade polymer-clay art style of image1: same clay material with fingerprints, same dimensional soft lighting and shadows, same color system, same banner and panel design language, same text rendering quality, same cute and lively character feel. Replace ALL text with the new text below and adjust the scene to the new topic. Do NOT copy any text, letters, numbers or layout wording from image1.
 > ```
 >
-> - `image1` ＝ **画风锚**：满意版对应页（`assets/style-templates/P01–P10.png`；封面 P01 / 目录 P02 / 内容 P03–P09 轮换 / 总结 P10，就近取）
+> - `image1` ＝ **画风锚**：**默认＝`assets/style-refs/*.jpg` 的实物黏土手作照片**（house 风源头，**不含任何真实人物的脸**，7 张轮换取用）。
+>   - ⛔ **不是** `assets/owner-private/P01–P10.png`——那是**作者本人的形象**，默认用它等于把作者的脸喂给外人（隐私铁律 12）。
+>   - ✅ 仅当**作者本人**做自己的课件时才可用 owner-private 那套：封面 P01 / 目录 P02 / 内容 P03–P09 轮换 / 总结 P10，就近取。
 > - `image2` ＝ **形象锚**：Phase 1 角色锚点图（谁用就是谁的形象）
 > - **缺这一段或缺任一张参考图 = 纯文字抽签 = 呆丑版（已实测根因）。**
 

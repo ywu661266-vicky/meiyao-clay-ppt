@@ -15,7 +15,8 @@
 - **每条页面调用都带两张参考图**：
   - `image1` ＝ **已通过的同型参考页**（锁版式 + 画风）：prompt 写 `Follow the LAYOUT of image1` / `EXACTLY the same style, palette and lighting as the reference image: deep purple textured clay wall background...`
   - `image2` ＝ **角色锚点图**（锁脸）：`Use image2 as the character.`
-- 新课件的 image1 从哪来？→ `assets/style-templates/P01–P10.png`（满意版整套，页型就近取）。
+- 新课件的 `image1` 从哪来？→ **`assets/style-refs/*.jpg` 的实物黏土照片**（默认，不含真实人脸）。
+  ⛔ 不是 `assets/owner-private/P01–P10.png`——那是作者本人形象，只在作者本人做自己的课件时可用（隐私铁律 12）。
 - prompt 骨架：`A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation slide/cover... Deep purple clay wall background with subtle handmade clay texture.`
 
 ### 第 3 步 · 迭代修页（不合格重出，毛病写成禁令）
@@ -40,7 +41,7 @@
 ## 四、稳定出品三道闸（2026-10-25 补 · 任何人丢照片都必须满足）
 
 1. **必有照片**：没有角色照片（image2）绝不生成人物，先问。纯文字捏人必出丑八怪。
-2. **两阶段不可省**：Stage 1 先建角色锚点（`image1`＝`assets/style-templates/P01.png` 锁 house 风 ＋ `image2`＝照片 → 产出该人的黏土角色锚点）；Stage 2 起每页都用这张锚点当 `image2`，绝不每页重新拿照片现捏。
+2. **两阶段不可省**：Stage 1 先建角色锚点（`image1`＝**画风锚**（默认 `assets/style-refs/*.jpg` 实物黏土照；仅作者本人时可用 `owner-private/P01.png`）＋ `image2`＝照片 → 产出该人的黏土角色锚点）；Stage 2 起每页都用这张锚点当 `image2`，绝不每页重新拿照片现捏。没走 Stage 1 时，`image2`＝中性模板 `assets/characters/neutral-anchor.png`。
 3. **强人设不可省**：每个角色必须有"发型＋≥1 标志性配饰"的成体系人设（参考满意版丸子头＋粉蝴蝶结＋圆框眼镜＋蓝背带裙）。照片素净无标志时，主动提议 1–2 个签名元素并确认——不许滑回"衬衫＋通用笑脸"模板（派派那张 7/10 就是栽在这）。
 
 > 满足这三闸，"你再生成一个你形象的女孩 / 别人生成他形象的人物"都能稳定出跟满意版同款的 house 风 Q 版小人。
