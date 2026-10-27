@@ -28,15 +28,9 @@ import argparse
 import os
 import sys
 
-try:
-    import numpy as np
-    import cv2
-    from PIL import Image
-    _HAVE_CV2 = True
-except Exception:  # noqa: BLE001
-    # 同事新机没装 opencv/numpy 时，降级为纯 PIL 处理，绝不卡死
-    from PIL import Image, ImageFilter
-    _HAVE_CV2 = False
+import numpy as np
+import cv2
+from PIL import Image
 
 
 def watermark_bbox(W, H, pad=5):
@@ -66,20 +60,10 @@ def clean_array(arr, pad=5, dilate=2, radius=6):
 
 def clean_file(path, suffix="_clean", pad=5):
     im = Image.open(path).convert("RGB")
-    if _HAVE_CV2:
-        out = clean_array(np.array(im), pad=pad)
-        root, ext = os.path.splitext(path)
-        dst = f"{root}{suffix}{ext}"
-        Image.fromarray(out).save(dst)
-        return dst
-    # 纯 PIL 降级：水印多在右下角纯色区，用整图轻高斯模糊后只回填该区域
-    blurred = im.filter(ImageFilter.GaussianBlur(radius=9))
-    x0, y0, x1, y1 = watermark_bbox(*im.size, pad)
-    region = blurred.crop((x0, y0, x1, y1))
-    im.paste(region, (x0, y0))
+    out = clean_array(np.array(im), pad=pad)
     root, ext = os.path.splitext(path)
     dst = f"{root}{suffix}{ext}"
-    im.save(dst)
+    Image.fromarray(out).save(dst)
     return dst
 
 
@@ -106,8 +90,6 @@ def main():
     if not files:
         print("没有找到可处理的图片")
         return 1
-    if not _HAVE_CV2:
-        print("[warn] 未检测到 opencv/numpy，已用纯 PIL 降级去水印（效果略弱，建议 pip install opencv-python-headless numpy）")
     for p in files:
         try:
             dst = clean_file(p, suffix=args.suffix, pad=args.pad)
