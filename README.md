@@ -118,13 +118,21 @@ python scripts/make_title.py "从改到造" 80 --on 底图.png 26 25 出图.png 
 3. **批量内页** — 确认后才生成目录 + 内容页 + 总结页（**每页标题同样烘进图**）
 4. **合成** — `scripts/build_pptx.py` 铺满页面 + 写入讲师备注
 
-## 安装
+## 安装（推荐用发布包，不要 git clone）
+
+> ⚠️ **不要用 `git clone` 整个仓库**：仓库含第三方课件 PDF 等大文件，整库约 45MB，在部分网络/安全软件下会被判"高风险"或下载失败、极慢。
+> ✅ **正确做法：下载 GitHub Releases 里的 `meiyao-clay-ppt_分享版_*.zip`**（已剔除作者私有素材与第三方大文件，约 18MB），解压到 skills 目录即可：
 
 ```bash
-git clone https://github.com/ywu661266-vicky/meiyao-clay-ppt.git ~/.workbuddy/skills/meiyao-clay-ppt
+# 1) 从 Releases 下载分享版 zip（见仓库 Releases 页）
+# 2) 解压到 WorkBuddy 的 skills 目录
+mkdir -p ~/.workbuddy/skills/meiyao-clay-ppt
+#   把 zip 里的 meiyao-clay-ppt/ 目录解压覆盖到上面这个路径
 ```
 
-或把本目录整个复制到 `~/.workbuddy/skills/` 下即可。
+或直接把分享版目录整个复制到 `~/.workbuddy/skills/meiyao-clay-ppt/` 下即可。
+
+> 如使用人想贡献代码、自己改 skill，再考虑 `git clone`；**普通使用只装分享版 zip**。
 
 ## 触发方式
 

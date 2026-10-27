@@ -2,7 +2,7 @@
 
 > ## 唯一路径：一页 = 一张 1920×1080 的整图，字全部烘进去
 >
-> - **画布**：`size:"1920x1080"`（16:9）。**不许 1536×1024（3:2）**——那是白边的源头。
+> - **画布**：请求 `size:"1024x576"`（16:9），出图后统一放大到 `1920×1080` 再装盘（= 满意版《专家技能连接器》36 条调用实测参数）。❌ **绝不直接请求 `1920x1080`**——工具不支持会回落成 1536×1024（3:2）＝整页左右白边，交付即废（同事版死因）。❌ 也不是 `1536x1024`。
 > - **结构**：横幅标题 + 副标题 + N 个色块面板 + 底部结论条，**一页 ≥4 个信息块**。
 > - **文字**：这一页要上屏的中文**全部原样写进 prompt、用单引号括起来**，句末加
 >   `Make every Chinese character clearly readable and correctly formed, no garbled characters.`
@@ -59,21 +59,24 @@ The '{文字}' is sculpted from thick 3D polymer-clay letters: raised, chunky, r
 
 > **人物段的唯一真源 = `references/character-style.md`。** 那里有用户的判级、八六原版画法解剖、身份锁定段、换装清单、多小人规则。
 > **必须出「完整全身」**：只出半身，后面要全身时模型会自己"补"下半身，服装和比例就漂了。
-> **画风基准（不是"唯一默认款"）= 圆框眼镜 + 深色发 + 约 2.5–3 头身 Q 版小孩**（= **用户自己的成品** `cover-excel-example.png` / `toc-clay-lettering-example.png`）。
+> **画风基准 = house 黏土风（材质 / 2.5–3 头身 / 大眼圆脸 / 小嘴 / 哑光手感）**，来自 `image1`（画风锚）。
+> **人物身份 = `image2`（使用人照片）**，绝不在模板里写死任何具体发型 / 发饰 / 眼镜 / 服装**（旧版写死"顶髻＋粉蝴蝶结＋圆框眼镜＋蓝背带裙"＝把作者本人套给所有人，已废）**。谁用就是谁的形象（详见 `references/character-style.md` §三）。
 > **人物要"百变、不定死"**：脸 / 画风锁，衣服 / 姿态 / 场景每页可变、可男可女。
 
 ```
-A single premium handcrafted polymer-clay figurine of a cute little kid presenter, about 2.5–3 head-lengths tall (a big round head on a small compact body, short rounded limbs — NOT a tall slender figure, NOT an adult). COMPLETE FULL BODY from the top of the hair down to the shoes, standing upright, facing the camera, entire body completely visible inside the frame, head to toe, NOT cropped by any frame edge, with clear empty margin above the hair and below the shoes.
+A premium handcrafted polymer-clay figurine, about 2.5–3 head-lengths tall (a big round head on a small compact body, short rounded limbs — NOT a tall slender figure, NOT an adult). COMPLETE FULL BODY from the top of the hair down to the shoes, standing upright, facing the camera, entire body completely visible inside the frame, head to toe, NOT cropped by any frame edge, with clear empty margin above the hair and below the shoes. (If image2 is only a half-body photo, STILL generate the COMPLETE FULL BODY including both legs and shoes.)
 
-Hair: dark (black or deep brown) hair gathered into a neat top bun, with a soft side-swept fringe, and a rose/pink bow headband across the top of the head.
+IDENTITY — reproduce the person in image2 EXACTLY; read each trait off image2, do NOT invent or substitute:
+- gender : {copy image2: male or female}   <-- MUST match image2, never flip
+- face   : {copy image2's real face shape and feature proportion — narrow / round / long jaw, eye spacing, nose size; KEEP the person recognizable}
+- hair   : {copy image2's real hairstyle, length and colour}
+- glasses: {wear them if image2 wears them; omit entirely if not worn}
+- outfit : {copy image2's clothing, OR swap to an outfit the user asked for — see 可换装清单}
 
-Face: big round cute face, large expressive eyes with clear highlights, a small smiling mouth, soft rosy blush. Wearing large ROUND glasses on the nose.
-
-Outfit: a blue pinafore dress over a light cream shirt, tiny rounded shoes (clothes may change page to page — see the outfit list in character-style.md).
-
-Material: handmade polymer clay with clear fingerprints, sculpting tool marks and slightly matte soft surfaces on every form; NOT photorealistic, NOT glossy plastic toy, NOT flat anime line art.
-
+Material: handmade polymer clay with visible fingerprints, sculpting marks and matte soft surfaces on every form; NOT photorealistic, NOT glossy plastic toy, NOT flat anime line art.
 Lighting: soft even studio light with gentle contact shadow at the feet. Background: plain light warm grey seamless backdrop for later compositing. No text, no watermark, no letters, no numbers.
+
+⚠️ The Q-version is a STYLE, not a fixed face: a narrower face in image2 must stay narrower; if the clothing were covered, one must still recognize WHO this is, while clearly seeing it is a chibi Q figure.
 ```
 
 **脸部锁定段（同一套之内每页必抄，一字不改 —— 只锁脸，不锁衣）：**
