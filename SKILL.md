@@ -134,11 +134,6 @@ agent_created: true
      ——怕的就是有人不知道能换，看着顺眼就直接用。
    - **替换路径**：使用人随时丢一张照片 → Phase 1 用他的照片重做一张角色锚点 → 整套按新锚点重出。角色锚点是一次生成全册复用，换人不重教。
 
-13. **🚨 出图提速铁律（2026-10-26 实测：同事跑"只定一张参考图"都极慢，根因在此）。** 慢来自三处，全部规避：
-   - **① `quality` / `input_fidelity` 不要默认 high。** 角色锚点、封面确认这类"先看一眼像不像"的图，`quality` **省略（走默认）或写 `"standard"`**，不写 `input_fidelity:"high"`——这两项会让单次出图慢 2–3 倍。等用户确认满意、进正式批量页时，才用 `quality:"high"`。
-   - **② 确认阶段不跑去水印 / 不跑 `build_pptx.py` / 不跑 `audit_deck.py`。** 这几步只在**最终交付**前做。右下角水印**不影响"像不像"判断**——确认阶段出图后直接 show 给用户看即可，带水印只是预览图，不是交付物。（`remove_watermark.py` 在新机上若缺 `opencv/numpy` 已自动降级为纯 PIL，不会卡死。）
-   - **③ 只出一张参考图时走「最快路径」**：出 1 张锚点（默认质量）→ 直接 show → 问"像不像 / 要不要调"→ **不要绕**：不要自检多轮、不要先搭 PPTX、不要跑验收脚本。用户原话核心就是"定一张参考图都要很久"，根因就是①②③没做到。
-
 ## 款式库：人物 / 封面 / 内页 任意搭配（避免千篇一律）
 
 ### ⭐ 人物：唯一真源 = `references/character-style.md`
@@ -264,7 +259,7 @@ agent_created: true
 - **先判 Phase 0 走的是哪条分支**（决定本阶段要不要出图）：
   | 分支 | 本阶段做什么 |
   |---|---|
-  | **A1 复用既有满意作品** | **不出新图**——直接用使用人那套的角色页（单人全身那张）当 `character_anchor`，或用那套的封面页当锚（用 python-pptx / PIL 裁出单人区域即可，无需专用脚本）。⛔ 仅限使用人自己的作品。 |
+  | **A1 复用既有满意作品** | **不出新图**——直接把使用人那套的封面页/角色页裁出单人部分当 `character_anchor`（裁切用任意截图工具即可，本 skill 不提供裁切脚本），或直接用那套的封面页当锚。⛔ 仅限使用人自己的作品。 |
   | **A2 给了照片** | **出 1 张**（见下方）。 |
   | **B / C 没照片** | **不出图**——`character_anchor`＝`assets/characters/neutral-anchor.png`（中性模板小人），直接进 Phase 2。 |
 - **A2 出图时必须图生图**，两张参考：
@@ -275,7 +270,6 @@ agent_created: true
 - prompt 首行固定：`Reproduce the EXACT handmade clay material, 2.5–3 head chibi proportion, soft dimensional lighting and liveliness of the character in image1. Do NOT copy image1's hairstyle, clothes or accessories — use image2's person as the identity.`（先锁"画风/材质/比例"，再换"脸"）
 - **强辨识度人设必须锁死**：prompt 里写死这个人的发型＋≥1 个标志性配饰（若照片本身素净无标志，见 铁律 10③ 主动提议并确认），不许写成"通用可爱小孩"。
 - 出 **1 张 1024×1024** 方图（简洁背景便于后续合成），立刻交用户确认"像不像他要的形象、house 风对不对"。不合格就按反馈改 1 处、重出 1 张，不批量。
-   ⚡ **提速**：这张确认图 `quality` 省略或写 `"standard"`，**不要** `input_fidelity:"high"`；出图后**直接 show 给使用人确认**，**不要先跑 `remove_watermark.py`**（水印不影响"像不像"判断，去水印留到最终交付）。
 - **这张锚点图 = 后续所有页面的 image2**（见 Phase 2/3）。任何人（包括分享出去的同事）都用自己的照片走这一遍，出来的就是"跟我们一样"的 house 风小人。
 
 ### Phase 2 · 封面（1 张整页图）
