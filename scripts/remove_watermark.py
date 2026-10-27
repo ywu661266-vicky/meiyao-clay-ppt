@@ -28,9 +28,16 @@ import argparse
 import os
 import sys
 
-import numpy as np
-import cv2
-from PIL import Image
+from PIL import Image, ImageFilter
+
+try:
+    import numpy as np
+    import cv2
+    HAS_CV2 = True
+except Exception:
+    HAS_CV2 = False
+    print("[warn] 未检测到 cv2/numpy，remove_watermark 改用 PIL 高斯模糊降级方案"
+          "（装 opencv-python-headless + numpy 后才会用 inpaint 精修）", file=sys.stderr)
 
 
 def watermark_bbox(W, H, pad=5):
@@ -47,7 +54,7 @@ def watermark_bbox(W, H, pad=5):
 
 
 def clean_array(arr, pad=5, dilate=2, radius=6):
-    """arr: HxWx3 RGB uint8 -> 去水印后的同尺寸数组。"""
+    """arr: HxWx3 RGB uint8 -> 去水印后的同尺寸数组（cv2 路径）。"""
     H, W = arr.shape[:2]
     x0, y0, x1, y1 = watermark_bbox(W, H, pad)
     mask = np.zeros((H, W), np.uint8)
@@ -58,12 +65,26 @@ def clean_array(arr, pad=5, dilate=2, radius=6):
     return cv2.inpaint(arr, mask, radius, cv2.INPAINT_TELEA)
 
 
+def clean_array_pil(im, pad=5, radius=8):
+    """im: PIL.Image -> 去水印后的 PIL.Image（无 cv2 时的降级方案）。"""
+    W, H = im.size
+    x0, y0, x1, y1 = watermark_bbox(W, H, pad)
+    region = im.crop((x0, y0, x1, y1)).filter(ImageFilter.GaussianBlur(radius))
+    im = im.copy()
+    im.paste(region, (x0, y0))
+    return im
+
+
 def clean_file(path, suffix="_clean", pad=5):
     im = Image.open(path).convert("RGB")
-    out = clean_array(np.array(im), pad=pad)
+    if HAS_CV2:
+        out = clean_array(np.array(im), pad=pad)
+        result = Image.fromarray(out)
+    else:
+        result = clean_array_pil(im, pad=pad)
     root, ext = os.path.splitext(path)
     dst = f"{root}{suffix}{ext}"
-    Image.fromarray(out).save(dst)
+    result.save(dst)
     return dst
 
 

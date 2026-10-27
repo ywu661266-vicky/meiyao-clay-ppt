@@ -1,8 +1,8 @@
 # 提示词模板（已验证 · 2026-10-22 按"满意版"重写）
 
-> ## 唯一路径：一页 = 一张 1920×1080 的整图，字全部烘进去
+> ## 唯一路径：一页 = 一张 1920×1080 的整图（出图请求用 `size:"1024x576"`，装盘前放大到 1920×1080），字全部烘进去
 >
-> - **画布**：`size:"1920x1080"`（16:9）。**不许 1536×1024（3:2）**——那是白边的源头。
+> - **画布（请求尺寸）**：`size:"1024x576"`（16:9，工具实际支持）。出图后脚本放大到 1920×1080 装盘。**不许直接请求 1920x1080（回落 3:2 白边）**，**不许 1536×1024（3:2）**。
 > - **结构**：横幅标题 + 副标题 + N 个色块面板 + 底部结论条，**一页 ≥4 个信息块**。
 > - **文字**：这一页要上屏的中文**全部原样写进 prompt、用单引号括起来**，句末加
 >   `Make every Chinese character clearly readable and correctly formed, no garbled characters.`
@@ -98,13 +98,13 @@ The SAME character appears {N} times in this scene, each instance with the ident
 
 ---
 
-## 2. 封面（Cover）· 1920×1080
+## 2. 封面（Cover）· 1024×576（出图请求，装盘放大 1920×1080）
 
 > 用途：整页效果确认图。**标题、副标题、署名全部烘进图**（黏土立体字），不分层贴。
 > 场景从 `references/style-library.md`【封面款式库 CV1–CV6】任选一个场景块替换桌面场景，人物段照旧不动。
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation cover, 1920x1080. The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing upright in the scene, COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, with clear empty margin above her hair and below her shoes. She wears {换装，见 character-style.md 换装清单}. She is placed inside the scene, interacting with it, sharing the same light as the props. On the desk: a laptop, clay books, a potted plant, a coffee mug, small clay star decorations. {背景色} gradient background with scattered clay stars.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation cover, 1024x576 (upscaled to 1920x1080 for the slide). The SAME little kid character from the reference image — identical round face, identical large round glasses, identical dark top-bun hair with the pink bow headband, identical 2.5–3-head-length chibi proportion — standing upright in the scene, COMPLETE FULL BODY from the top of her hair down to her shoes, NOT cropped by any frame edge, with clear empty margin above her hair and below her shoes. She wears {换装，见 character-style.md 换装清单}. She is placed inside the scene, interacting with it, sharing the same light as the props. On the desk: a laptop, clay books, a potted plant, a coffee mug, small clay star decorations. {背景色} gradient background with scattered clay stars.
 
 COMPOSITION (must be exactly this): a large {铭牌色} clay ribbon plaque occupying the TOP-LEFT area; below it two stacked pill labels.
 
@@ -120,7 +120,7 @@ Tactile soft clay with fingerprints, rounded friendly shapes, soft directional l
 > 小头像徽章（可选）用 `image2` 传用户的照片，让模型在角上捏一枚小圆牌，写 `'{分享人}'`。
 
 **要点：**
-- 尺寸必须是 **1920×1080**；出来的不是 16:9 就当场重出。
+- 出图请求尺寸必须是 **1024×576**，装盘前放大到 1920×1080；出来的不是 16:9 就当场重出。
 - **人物要「完整全身」**：`COMPLETE FULL-BODY figure ... NOT cropped by any frame edge`，比例 `about 2.5–3 head-lengths`（Q 版小孩）。
 - 中文**原样写进 prompt 并用单引号括起来**，句末保留 `clearly readable and correctly formed`。
 - **用 Phase 1 的全身锚点图作 `image1`**（只靠文字描述会漂移）。
@@ -128,12 +128,12 @@ Tactile soft clay with fingerprints, rounded friendly shapes, soft directional l
 
 ---
 
-## 3. 目录页（Table of Contents）· 1920×1080
+## 3. 目录页（Table of Contents）· 1024×576（出图请求，装盘放大 1920×1080）
 
 > **标题与 4–6 个卡片标签全部烘进图。**
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen table of contents slide, 1920x1080. {背景色} deep gradient background with scattered clay stars and soft vignette.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen table of contents slide, 1024x576 (upscaled to 1920x1080 for the slide). {背景色} deep gradient background with scattered clay stars and soft vignette.
 
 COMPOSITION: a wide {铭牌色} clay ribbon plaque across the TOP CENTER. Below it, {N} rounded rectangular clay cards in a {2x2 / 3x2} grid, each card in a different color from the palette ({紫}/{绿}/{橙}/{红}) and each carrying a small clay icon ({图标清单}). At the bottom, one long cream clay strip holding a one-line summary.
 
@@ -150,7 +150,7 @@ Tactile soft clay with fingerprints, rounded friendly shapes, soft directional l
 
 ---
 
-## 4. 内容页 · 1920×1080（一页一张整图）
+## 4. 内容页 · 1024×576（出图请求，装盘放大 1920×1080，一页一张整图）
 
 > 每页都必须：**横幅标题 + 副标题 + ≥4 个信息块 + 底部结论条**，字全部烘进图。
 > 场景块从 `references/style-library.md`【内页款式库 IN1–IN14】任选，相邻页不重复。
@@ -159,7 +159,7 @@ Tactile soft clay with fingerprints, rounded friendly shapes, soft directional l
 ### 4-A 骨架：横幅标题 + 四色面板（最常用）
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation slide, 1920x1080. {背景色} deep gradient background with soft vignette and a few clay stars.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen presentation slide, 1024x576 (upscaled to 1920x1080 for the slide). {背景色} deep gradient background with soft vignette and a few clay stars.
 
 COMPOSITION:
 - A wide deep-purple clay ribbon plaque across the TOP holding the section title.
@@ -225,12 +225,12 @@ python scripts/compose_page.py --config pages.json
 
 ---
 
-## 5. 总结 / 结尾页（Summary）· 1920×1080
+## 5. 总结 / 结尾页（Summary）· 1024×576（出图请求，装盘放大 1920×1080）
 
 > 同其他页：**整页一张图，标题与结论条都烘进去**。
 
 ```
-A premium handcrafted polymer-clay diorama, 16:9 widescreen closing slide, 1920x1080. {背景色} deep gradient background with floating clay stars and soft bokeh.
+A premium handcrafted polymer-clay diorama, 16:9 widescreen closing slide, 1024x576 (upscaled to 1920x1080 for the slide). {背景色} deep gradient background with floating clay stars and soft bokeh.
 
 COMPOSITION: a large {铭牌色} clay plaque on the LEFT holding the closing title; on the RIGHT the SAME little kid character from the reference image, COMPLETE FULL BODY from hair to shoes, NOT cropped, giving an encouraging gesture beside a small clay robot; at the BOTTOM a long cream clay strip holding the one-line takeaway.
 
