@@ -1,0 +1,20 @@
+{
+  "name": "meiyao-clay-ppt",
+  "version": "1.1.0",
+  "description": "黏土风课件生成器 - WorkBuddy 技能包",
+  "main": "scripts/build_pptx.py",
+  "scripts": {
+    "test": "python scripts/verify_title.py && python scripts/verify_portable.py",
+    "build": "python scripts/build_pptx.py --help"
+  },
+  "keywords": ["ppt", "clay", "ai", "workbuddy", "课件"],
+  "license": "MIT",
+  "engines": {
+    "python": ">=3.8"
+  },
+  "dependencies": {
+    "python-pptx": "^0.6.23",
+    "Pillow": "^10.0.0",
+    "opencv-contrib-python": "^4.8.0"
+  }
+}
